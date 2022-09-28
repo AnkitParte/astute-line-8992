@@ -1,0 +1,218 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+.homeMainContainer {
+  height: auto;
+  width: auto;
+  border: 0px solid red;
+}
+.homeFirstContainer {
+  height: 500px;
+  width: auto;
+  margin: auto;
+  margin-left: 120px;
+  margin-top: 60px;
+  border: 0px solid blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.homeFirstContainer > div {
+  border: 0px solid black;
+  width: 45%;
+}
+.homeButtonAndInputBox {
+  height: 65px;
+  width: fit-content;
+  display: flex;
+  border: 2px solid #00b289;
+  align-items: center;
+  border-radius: 5px;
+}
+#firstHeading {
+  width: 90%;
+  margin-top: 20px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-family: 'Amerigo-bt roman opt', sans-serif;
+  color: rgb(77, 77, 77);
+}
+#firstBoxText {
+  font-size: 18px;
+  width: 90%;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: rgb(97, 96, 96);
+}
+#homeInput {
+  width: 280px;
+}
+.homeButtonBox {
+  height: 100%;
+  width: 170px;
+  background-color: #00b289;
+  border: #00b289;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+}
+@media screen and (max-width: 750px) {
+  .homeMainContainer {
+    border: 0px solid red;
+    overflow: hidden;
+  }
+  .homeFirstContainer {
+    width: 90%;
+    border: 0px solid blue;
+    margin: auto;
+  }
+  #homeFirstContainerRight {
+    border: 0px solid blue;
+    display: none;
+    background-color: wheat;
+  }
+  #homeFirstContainerLeft {
+    height: auto;
+    width: 550px;
+  }
+}
+@media screen and (max-width: 538px) {
+  .homeButtonAndInputBox {
+    width: fit-content;
+  }
+  #homeInput {
+    width: 210px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .homeMainContainer {
+    width: auto;
+    overflow: hidden;
+  }
+  #firstHeading {
+    width: 85%;
+  }
+  #firstBoxText {
+    width: 80%;
+  }
+  .homeButtonAndInputBox {
+    width: 75%;
+  }
+}
+#secondOnlyHeading {
+  text-align: center;
+  margin: auto;
+  width: 68%;
+  border: 0px solid blue;
+  font-family: 'Amerigo-bt roman opt', sans-serif;
+  font-size: 28px;
+  margin-top: 40px;
+  letter-spacing: 1px;
+  color: rgb(77, 77, 77);
+}
+@media screen and (max-width: 750px) {
+  #secondOnlyHeading {
+    width: 90%;
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 500px) {
+  #secondOnlyHeading {
+    font-size: 22px;
+  }
+}
+/* #homeSmallMenu {
+  width: 80%;
+  margin: auto;
+} */
+#forthCardSection {
+  width: 80%;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  flex-direction: row-reverse;
+  border: 0px solid #00b289;
+  gap: 100px;
+  margin-top: 60px;
+}
+@media screen and (max-width: 760px) {
+  #forthCardSection {
+    display: block;
+    /* background-color: black; */
+    margin-top: 30px;
+  }
+}
+
+#FirstColorFlex {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#SecondColorFlex {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#colorBoxButton {
+  background-color: #00b289;
+  border-color: #00b289;
+  color: white;
+  letter-spacing: 1px;
+  font-size: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#colorBoxButton:hover {
+  background-color: #097c61;
+}
+@media screen and (max-width: 750px) {
+  #SecondColorFlex,
+  #FirstColorFlex {
+    display: block;
+    box-sizing: border-box;
+    border: 0px solid teal;
+    margin: auto;
+  }
+  #FirstColorFlex {
+    padding-top: 60px;
+  }
+  #flexHeading {
+    margin-bottom: 50px;
+    font-size: 24px;
+    text-align: center;
+  }
+  #SecondColorFlex {
+    /* border: 1px solid teal; */
+    padding-bottom: 15px;
+  }
+  #flexText {
+    width: auto;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+}
+#endBox {
+  height: auto;
+  width: 80%;
+  border: 0px solid black;
+  margin: auto;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 100px;
+}
+#endBox1st,
+#endBox2nd {
+  border: 0px solid blue;
+  height: 250px;
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+}
