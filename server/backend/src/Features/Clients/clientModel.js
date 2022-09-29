@@ -5,6 +5,10 @@ const clientSchema = new mongoose.Schema({
     email: { type: String, required: true},
     name: { type: String, required: true },
     id: { type: Number },
+    contactName:{type:String,required:true},
+    phoneNumber:{type:String,required:true},
+    website:{type:String,required:true},
+    companyAddress:{type:String,required:true},
     
     
 })
