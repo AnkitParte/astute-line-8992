@@ -3,16 +3,17 @@ const User = require("./userModel");
 
 const app = express.Router();
 
-app.get("/login", async (req, res) => {
+app.post("/login", async (req, res) => {
     const { email, password } = req.body;
     try {
 
-        let checkUser = await User.findOne({ email, password });
+        let checkUser = await User.findOne({ email,password});
         console.log(checkUser);
         if (!checkUser) {
             return  res.status(401).send("Authentication failed, need to sign-up");
         }
-        res.status(200).send({
+        
+       return  res.status(200).send({
             token:`${checkUser.id}:${checkUser.email}:${checkUser.name}`
         })
        
