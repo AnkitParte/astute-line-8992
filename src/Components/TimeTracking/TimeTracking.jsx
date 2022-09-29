@@ -1,11 +1,14 @@
 import { Box, Button, Flex, Select, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
 import Alert from '../Clint/Alert';
-import Projectlist from '../Project/Project_list';
-import { AddTask } from './AddTask';
-import TaskList from './TaskList';
+import { AddTask } from '../Task/AddTask';
+import TaskList from '../Task/TaskList';
+import { Addhours } from './AddHours';
+// import Projectlist from '../Project/Project_list';
+// import { AddTask } from './AddTask';
+// import TaskList from './TaskList';
 
-const Tasks = () => {
+const TimeTracking = () => {
   return (
     <div>
       <Box
@@ -59,7 +62,7 @@ const Tasks = () => {
               Add Form Template
             </Button>
             <Box>
-              <AddTask />
+              <Addhours />
             </Box>
           </Flex>
         </SimpleGrid>
@@ -69,4 +72,4 @@ const Tasks = () => {
   );
 };
 
-export default Tasks;
+export default TimeTracking;

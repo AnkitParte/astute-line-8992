@@ -10,7 +10,7 @@ const ProjectPage = () => {
     <Box
       fontFamily={'sans-serif'}
       bg="#fbfcfc"
-      p={50}
+      p={30}
       alignItems="center"
       justifyContent="center"
     >

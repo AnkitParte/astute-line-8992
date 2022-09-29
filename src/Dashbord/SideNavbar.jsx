@@ -136,11 +136,13 @@ export default function Navbar() {
           <Image h={7} ml={5} mr={5} src={invoices} />
           Invoices
         </NavItem>
+        <Link to={"/TimeTracking"} >
         <NavItem>
           {' '}
           <Image h={7} ml={5} mr={5} src={time} />
           Time Tracking
         </NavItem>
+        </Link>
         <Link to={'/tasks'}>
           <NavItem>
             {' '}
@@ -235,8 +237,7 @@ export default function Navbar() {
           {/* Add content here, remove div below  
             <Box borderWidth="4px" borderStyle="dashed" rounded="md" h="96" />*/}
           <RoutesPage />
-          <Clint />
-          <ProjectPage />
+         
         </Box>
       </Box>
     </Box>
