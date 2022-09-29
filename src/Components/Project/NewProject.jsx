@@ -17,13 +17,13 @@ import {
    ModalHeader,
    ModalCloseButton,
    ModalBody,
+   Select,
   } from '@chakra-ui/react';
-export const NewClint = () => {
+export const NewProject = () => {
     const [input ,setinput] =useState({
         "clint":"",
         "name":"",
-        "email":"",
-
+        "rate":"",
     })
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -38,7 +38,7 @@ export const NewClint = () => {
   return (
     <div>
     <>
-    <Button borderRadius={"2px"} h={"40px"} w={["130px","130px","190px"]} bg={"#00b289"} colorScheme={"#00b289"} color={"#ffffff"} onClick={onOpen}>NEW CLINT</Button>
+    <Button     borderRadius={"2px"} h={"40px"} w={["130px","130px","190px"]} bg={"#00b289"} colorScheme={"#00b289"} color={"#ffffff"} onClick={onOpen}>NEW PROJECT</Button>
     <Modal
       initialFocusRef={initialRef}
       finalFocusRef={finalRef}
@@ -47,37 +47,36 @@ export const NewClint = () => {
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>CREATE NEW CLINT</ModalHeader>
+        <ModalHeader>CREATE NEW PROJECT</ModalHeader>
         <ModalCloseButton/>
         <ModalBody pb={6}>
           <FormControl>
             <FormLabel>CLINT</FormLabel>
-            <Input ref={initialRef} onChange={(e)=>setinput({
-                ...input,
-                "clint":e.target.value
-            })} type="text" placeholder='First name' />
+            <Select placeholder='SELECT CLINT'>
+            <option>madhu</option>
+            <option>sai</option>
+            </Select>
           </FormControl>
           <FormControl mt={4}>
-            <FormLabel>CONTACT NAME</FormLabel>
+            <FormLabel>PROJECT NAME</FormLabel>
             <Input type={"text"} onChange={(e)=>setinput({
                 ...input,
                 "name":e.target.value
-            })} placeholder='Last name' />
+            })} placeholder='PROJECT NAME' />
           </FormControl>
           <FormControl>
-            <FormLabel>CONTACT EMAIL </FormLabel>
+            <FormLabel>RATE PER-HOUR</FormLabel>
             <Input ref={initialRef} onChange={(e)=>setinput({
                 ...input,
-                "email":e.target.value
-            })} type="text" placeholder='First name' />
+                "rate":e.target.value
+            })} type="number" placeholder='100.00' />
           </FormControl>
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme='blue' mr={3}>
-            Save
+          <Button colorScheme='blue' w={"100%"}  >
+            Create Project
           </Button>
-          <Button onClick={onClose}>Cancel</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

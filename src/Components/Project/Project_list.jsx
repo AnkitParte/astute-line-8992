@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Flex,
@@ -7,10 +7,13 @@ import {
   chakra,
   useColorModeValue,
   Text,
+  Input,
 } from "@chakra-ui/react";
 
 
-export default function List(){
+export default function Projectlist(){
+  const [date,setdate] =useState("2022-09-16")
+  console.log(date)
   const data = [
     { name: "Segun Adebayo", email: "sage@chakra.com" },
     { name: "Josef Nikolas", email: "Josef@mail.com" },
@@ -53,9 +56,10 @@ export default function List(){
           fontSize="md"
           fontWeight="hairline"
         >
-        <span>Clint</span>
-          <span>Name</span>
-          <span>Email</span>
+        <span>title</span>
+        <span>Name</span>
+          <span>date</span>
+          <span>due</span>
           <chakra.span textAlign={{ md: "right" }}>Actions</chakra.span>
         </SimpleGrid><Text>Currently you did'nt have any clints please add a new clint</Text></Flex>:
         data.map((person, pid) => {
@@ -67,7 +71,7 @@ export default function List(){
             >
               <SimpleGrid
                 spacingY={3}
-                columns={{ md: 1, xl: 4}}
+                columns={{ md: 1, xl: 6}}
                 w={{ base: 120, md: "full" }}
                 textTransform="uppercase"
                 bg={bg2}
@@ -77,28 +81,32 @@ export default function List(){
                 fontSize="md"
                 fontWeight="hairline"
               >
-              <span>Clint</span>
-                <span>Name</span>
-                <span>Email</span>
+              <span>title</span>
+              <span>Name</span>
+                <span>date</span>
+                <span>due</span>
+                <span>paid</span>
                 <chakra.span textAlign={{ md: "right" }}>Actions</chakra.span>
               </SimpleGrid>
               <SimpleGrid
                 spacingY={3}
-                columns={{ md: 1, xl: 4 }}
+                columns={{ md: 1, xl: 6 }}
                 w="full"
                 py={2}
                 px={10}
                 fontWeight="hairline"
               >
               <span>{person.name}</span>
-                <span>{person.name}</span>
+              <span>{person.name}</span>
+                <span><Input value={date} onChange={(e)=>setdate(e.target.value)} type={"date"} /></span>
                 <chakra.span
                   textOverflow="ellipsis"
                   overflow="hidden"
                   whiteSpace="nowrap"
                 >
-                  {person.email}
+                  {person.name}
                 </chakra.span>
+                <spam>madhu</spam>
                 <Flex justify={{ md: "end" }}>
                   <Button variant="solid" colorScheme="red" size="sm">
                     Delete

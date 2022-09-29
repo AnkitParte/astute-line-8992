@@ -17,13 +17,14 @@ import {
    ModalHeader,
    ModalCloseButton,
    ModalBody,
+   Select,
+   Checkbox,
   } from '@chakra-ui/react';
-export const NewClint = () => {
+export const AddTask = () => {
     const [input ,setinput] =useState({
         "clint":"",
         "name":"",
-        "email":"",
-
+        "rate":"",
     })
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -38,7 +39,7 @@ export const NewClint = () => {
   return (
     <div>
     <>
-    <Button borderRadius={"2px"} h={"40px"} w={["130px","130px","190px"]} bg={"#00b289"} colorScheme={"#00b289"} color={"#ffffff"} onClick={onOpen}>NEW CLINT</Button>
+    <Button     borderRadius={"2px"} h={"40px"} w={["130px","130px","190px"]} bg={"#00b289"} colorScheme={"#00b289"} color={"#ffffff"} onClick={onOpen}>ADD TASK</Button>
     <Modal
       initialFocusRef={initialRef}
       finalFocusRef={finalRef}
@@ -47,37 +48,42 @@ export const NewClint = () => {
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>CREATE NEW CLINT</ModalHeader>
+        <ModalHeader>CREATE NEW TASK</ModalHeader>
         <ModalCloseButton/>
         <ModalBody pb={6}>
-          <FormControl>
-            <FormLabel>CLINT</FormLabel>
-            <Input ref={initialRef} onChange={(e)=>setinput({
-                ...input,
-                "clint":e.target.value
-            })} type="text" placeholder='First name' />
+          <FormControl mt={4}>
+          <FormLabel>TITLE</FormLabel>
+          <Input type={"text"} onChange={(e)=>setinput({
+              ...input,
+              "title":e.target.value
+          })} placeholder='TITLE' />
+        </FormControl>
+        <FormControl>
+            <FormLabel>PROJECT</FormLabel>
+            <Select placeholder='SELECT CLINT'>
+            <option>madhu</option>
+            <option>sai</option>
+            </Select>
           </FormControl>
           <FormControl mt={4}>
-            <FormLabel>CONTACT NAME</FormLabel>
-            <Input type={"text"} onChange={(e)=>setinput({
+            <FormLabel>PROJECT NAME</FormLabel>
+            <Input type={"date"} onChange={(e)=>setinput({
                 ...input,
-                "name":e.target.value
-            })} placeholder='Last name' />
+                "date":e.target.value
+            })}  />
           </FormControl>
-          <FormControl>
-            <FormLabel>CONTACT EMAIL </FormLabel>
-            <Input ref={initialRef} onChange={(e)=>setinput({
-                ...input,
-                "email":e.target.value
-            })} type="text" placeholder='First name' />
+          <FormControl mt={4}>
+            <FormLabel>MARK IF DONE</FormLabel>
+            <Checkbox colorScheme='green' defaultChecked>
+            Checkbox
+          </Checkbox>
           </FormControl>
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme='blue' mr={3}>
-            Save
+          <Button colorScheme='blue' w={"100%"}  >
+            ADD TASK
           </Button>
-          <Button onClick={onClose}>Cancel</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
