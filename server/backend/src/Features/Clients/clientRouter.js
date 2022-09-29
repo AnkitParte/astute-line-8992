@@ -76,7 +76,7 @@ app.post("/", async(req, res)=>{
         
         // if (!checkClient) {
         
-             let newClient = await Client.create({ email, name, userId });
+             let newClient = await Client.create(req.body);
         console.log(newClient);
         return res.status(201).send({
             token:`${newClient._id}:${newClient.email}`
