@@ -49,7 +49,7 @@ export default function CreateProject() {
                         </FormControl>
                         <FormControl mt={4}>
                             <FormLabel>HOURLY RATE</FormLabel>
-
+                            <Input ref={initialRef} placeholder='' />
                         </FormControl>
                     </ModalBody>
 

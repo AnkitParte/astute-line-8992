@@ -9,29 +9,19 @@ import {
   Grid,
   theme,
 } from '@chakra-ui/react';
-// import { ColorModeSwitcher } from './ColorModeSwitcher';
-// import { Logo } from './Logo';
-import DashBoard from './DashBoard/DashBoard';
-import Footer from './Footer/Footer';
-import Graph from './DashBoard/Graph';
-import UpComing from './DashBoard/UpComing';
-// import CreateProject from './DashBoard/ButtonModal/CreateProject';
-// import InitialFocus from './DashBoard/InitialFocus';
 
-
-// import DashBoard from './DashBoard/RefData';
+import SideNavbar from "./DashBoard/Navbar/SideNavbar"
+import Footer from './DashBoard/Footer';
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      {/* <RefData /> */}
 
-      <DashBoard />
-      <UpComing />
-      <Graph />
+      <SideNavbar />
+
       <Footer />
+     
 
-      
 
     </ChakraProvider>
   );
