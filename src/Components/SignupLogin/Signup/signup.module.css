@@ -1,0 +1,8 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+#signupFormBox {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

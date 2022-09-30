@@ -10,7 +10,7 @@ import React from 'react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 const Footer = () => {
   return (
-    <Box as="div" w="80%" m="auto" pl="10%">
+    <Box as="div" w="80%" m="auto" pl="10%" mb="70px">
       <SimpleGrid columns={[1, 2, 3]} gap="20px">
         <VStack align={'left'}>
           <Heading as="h3" size="md">
