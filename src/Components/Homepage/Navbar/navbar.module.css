@@ -121,6 +121,9 @@
     .hoverProduct{
       display: none;
     }
+        .dropdown:hover .hoverProduct {
+          display: none;
+        }
   .navRightContainerMobile {
     position: absolute;
     display: block;
