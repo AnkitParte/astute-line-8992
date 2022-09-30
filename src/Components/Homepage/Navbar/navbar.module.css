@@ -18,6 +18,23 @@
   top: 0px;
   z-index: 2000;
 }
+.hoverProduct{
+  width: 20%;
+  background-color: white;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  z-index: 100;
+  position: fixed;
+  left: 30%;
+  top: 55px;
+ display: none;
+}
+.hoverProductText{
+  margin: 5px 0;
+}
+.dropdown:hover .hoverProduct{
+  display: block;
+}
 .navRightContainer {
   display: flex;
   align-items: center;
@@ -25,18 +42,40 @@
 }
 
 .navLogo {
-  width: 160px;
+  width: 80%;
 }
 .navRightText {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
   margin-right: 0px;
   font-size: 17px;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0.5px;
   margin-left: 20px;
-}
-.navRightText:hover {
+  color: #4c4d5f;
+  font-weight: 400;
   cursor: pointer;
 }
+.navRightIcon{
+  color: #4c4d5f;
+  font-size: 30px;
+  
+}
+.navRightTextProduct{
+  display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-right: 0px;
+    font-size: 17px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.5px;
+    margin-left: 20px;
+    color: #4c4d5f;
+    font-weight: 400;
+    cursor: pointer;
+}
+
 /* .boxOfButton {
   background-color: black;
 } */
@@ -79,6 +118,9 @@
   .navRightContainer {
     display: none;
   }
+    .hoverProduct{
+      display: none;
+    }
   .navRightContainerMobile {
     position: absolute;
     display: block;

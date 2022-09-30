@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TimeIcon } from '@chakra-ui/icons';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
-import Login from '../Login/Login';
+// import Login from '../Login/Login';
 import Styles from './homepage.module.css';
 import {
   Box,
@@ -45,9 +45,11 @@ const Homepage = () => {
                 outline="none"
                 placeholder="Enter Your Email"
               />
-              <Box as="div" className={Styles.homeButtonBox}>
+              <a href="mailto:hellobonsai@gmail.com" className={Styles.homeButtonBox}>
+                <Box as="div" >
                 START FREE
-              </Box>
+                </Box>
+              </a>
             </Box>
           </Box>
           <Box as="div" id={Styles.homeFirstContainerRight}>
@@ -325,7 +327,7 @@ const Homepage = () => {
           <Box id={Styles.endBox1st}>
             <Image
               marginRight={'25px'}
-              width={'165px'}
+              width={'40%'}
               src="https://assets-global.website-files.com/58868bcd2ef4daaf0f072900/5e5fdcff2a5865afca6505f5_Explore%20invoices.svg"
               alt="anything"
             />
@@ -348,7 +350,7 @@ const Homepage = () => {
           <Box id={Styles.endBox2nd}>
             <Image
               marginRight={'25px'}
-              width={[, '100px', '120px', '165px']}
+              width={"40%"}
               src="https://assets-global.website-files.com/58868bcd2ef4daaf0f072900/5e5fdcff2a586587ad6505f6_Explore%20task%20management.svg"
               alt="anything"
             />

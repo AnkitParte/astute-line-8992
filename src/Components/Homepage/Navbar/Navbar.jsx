@@ -8,14 +8,17 @@ import {
   Text,
   HStack,
 } from '@chakra-ui/react';
+import { RiArrowDropDownLine} from 'react-icons/ri';
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import React from 'react';
 import styles from './navbar.module.css';
 import { useState } from 'react';
 const Navbar = () => {
+  const [showProduct, setShowProduct] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
   return (
+    <>
     <Box as="div" className={styles.navContainer}>
       <Box as="div">
         <Image
@@ -32,15 +35,42 @@ const Navbar = () => {
           isMobile ? styles.navRightContainerMobile : styles.navRightContainer
         }
       >
-        {/* <HStack > */}
-        <Text className={styles.navRightText}>Product</Text>
+          {/* <HStack > */}
+          <Box className={styles.dropdown}>
+
+            <Text className={styles.navRightTextProduct}>Product <RiArrowDropDownLine className={styles.navRightIcon} /></Text>
+           <Box className={styles.hoverProduct}>
+             <Box className={styles.hoverProductText}>
+           <b>Bonsai Wrokflow</b>
+        <Text w={['90%', '70%', '90%', '90%']} color="rgb(97,96,96)">
+          Look professional, win more clients and manage your business from one place
+        </Text>
+        </Box>
+          
+        <hr />
+        <Box className={styles.hoverProductText}>
+           <b>Bonsai Tax</b>
+        <Text w={['90%', '70%', '90%', '90%']} color="rgb(97,96,96)">
+          Track expenses, maximize tax write-offs, and estimate taxes without the headache.
+        </Text>
+        </Box>
+        <hr />
+        <Box className={styles.hoverProductText}>
+           <b>Bonsai Cash</b>
+        <Text w={['90%', '70%', '90%', '90%']} color="rgb(97,96,96)">
+          Bonsai's all-in-one financial hub.
+        </Text>
+        </Box>
+        
+    </Box>
+          </Box>
         {/* <ChevronDownIcon />
         </HStack>
         <HStack> */}
         <Text className={styles.navRightText}>Templates</Text>
         {/* <ChevronDownIcon />
         </HStack> */}
-        <Text className={styles.navRightText}>Pricing</Text>
+        <Text className={styles.navRightText}>Pricing </Text>
         <Text className={styles.navRightText}>Reviews</Text>
         {isAuth ? (
           <Container>
@@ -77,6 +107,8 @@ const Navbar = () => {
         )}
       </Button>
     </Box>
+   
+    </>
   );
 };
 
