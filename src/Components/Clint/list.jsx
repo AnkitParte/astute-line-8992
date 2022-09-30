@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Button,
   Flex,
@@ -8,10 +8,16 @@ import {
   useColorModeValue,
   Text,
 } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteClients, getClients } from "../../Store/clients/clients.actions";
 
 
 export default function List(){
-  const data = [
+  const { data } = useSelector((store) => store.login);
+  const {allClients} = useSelector((store)=>store.client)
+//Todo:need to replace data to {allClients} for fetching clints
+const dispatch = useDispatch()
+  var dum = [
     { name: "Segun Adebayo", email: "sage@chakra.com" },
     { name: "Josef Nikolas", email: "Josef@mail.com" },
     { name: "Lazar Nikolov", email: "Lazar@mail.com" },
@@ -20,6 +26,14 @@ export default function List(){
   const dataColor = useColorModeValue("white", "gray.800");
   const bg = useColorModeValue("white", "gray.800");
   const bg2 = useColorModeValue("gray.100", "gray.700");
+
+  // Todo : need to take id for deleting the clint
+  const deleteClintfun=(id)=>{
+dispatch(deleteClients(id))
+  }
+  useEffect(()=>{
+    dispatch(getClients())
+  })
 
   return (
     <Flex
@@ -37,7 +51,7 @@ export default function List(){
         bg={{ md: bg }}
         shadow="lg"
       >
-      {data.length===0?<Flex
+      {dum.length===0?<Flex
         direction={{ md: "row", xl: "column" }}
         bg={dataColor}
       >
@@ -58,7 +72,7 @@ export default function List(){
           <span>Email</span>
           <chakra.span textAlign={{ md: "right" }}>Actions</chakra.span>
         </SimpleGrid><Text>Currently you did'nt have any clints please add a new clint</Text></Flex>:
-        data.map((person, pid) => {
+        dum.map((person, pid) => {
           return (
             <Flex
               direction={{ md: "row", xl: "column" }}
@@ -100,7 +114,7 @@ export default function List(){
                   {person.email}
                 </chakra.span>
                 <Flex justify={{ md: "end" }}>
-                  <Button variant="solid" colorScheme="red" size="sm">
+                  <Button variant="solid" colorScheme="red" size="sm" onClick={()=>deleteClintfun()} >
                     Delete
                   </Button>
                 </Flex>

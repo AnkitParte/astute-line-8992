@@ -18,9 +18,19 @@ import {
    ModalCloseButton,
    ModalBody,
   } from '@chakra-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createClient } from '../../Store/clients/clients.actions';
+
+
+  //todo:include userid to creds from data comming from useSelector -->store.login
 export const NewClint = () => {
+
+  const { data } = useSelector((store) => store.login);
+
+  const dispatch=useDispatch()
+
     const [input ,setinput] =useState({
-        "clint":"",
+        "contactName":"",
         "name":"",
         "email":"",
 
@@ -35,6 +45,11 @@ export const NewClint = () => {
     
     console.log(input)
   },[input])
+
+  const AddClintfun=()=>{// todo: take token from data
+    dispatch(createClient(input,token))
+  }
+
   return (
     <div>
     <>
@@ -74,7 +89,7 @@ export const NewClint = () => {
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme='blue' mr={3}>
+          <Button onClick={AddClintfun} colorScheme='blue' mr={3}>
             Save
           </Button>
           <Button onClick={onClose}>Cancel</Button>

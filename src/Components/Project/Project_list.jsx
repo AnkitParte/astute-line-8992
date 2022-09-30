@@ -9,12 +9,17 @@ import {
   Text,
   Input,
 } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
 
 
 export default function Projectlist(){
+  const {allClients} = useSelector((store)=>store.client);
+  const {data} = useSelector((store)=>store.login);
+  const {allProjects} = useSelector((store)=>store.project)
+const dispatch = useDispatch()
   const [date,setdate] =useState("2022-09-16")
   console.log(date)
-  const data = [
+  const dum = [
     { name: "Segun Adebayo", email: "sage@chakra.com" },
     { name: "Josef Nikolas", email: "Josef@mail.com" },
     { name: "Lazar Nikolov", email: "Lazar@mail.com" },
@@ -23,6 +28,11 @@ export default function Projectlist(){
   const dataColor = useColorModeValue("white", "gray.800");
   const bg = useColorModeValue("white", "gray.800");
   const bg2 = useColorModeValue("gray.100", "gray.700");
+
+//Todo need to take id from map
+  const DeleteProject=(id)=>{
+
+  }
 
   return (
     <Flex
@@ -40,7 +50,7 @@ export default function Projectlist(){
         bg={{ md: bg }}
         shadow="lg"
       >
-      {data.length===0?<Flex
+      {dum.length===0?<Flex
         direction={{ md: "row", xl: "column" }}
         bg={dataColor}
       >
@@ -62,7 +72,7 @@ export default function Projectlist(){
           <span>due</span>
           <chakra.span textAlign={{ md: "right" }}>Actions</chakra.span>
         </SimpleGrid><Text>Currently you did'nt have any clints please add a new clint</Text></Flex>:
-        data.map((person, pid) => {
+        dum.map((person, pid) => {
           return (
             <Flex
               direction={{ md: "row", xl: "column" }}
@@ -108,7 +118,7 @@ export default function Projectlist(){
                 </chakra.span>
                 <spam>madhu</spam>
                 <Flex justify={{ md: "end" }}>
-                  <Button variant="solid" colorScheme="red" size="sm">
+                  <Button onClick={()=>DeleteProject(id)} variant="solid" colorScheme="red" size="sm">
                     Delete
                   </Button>
                 </Flex>

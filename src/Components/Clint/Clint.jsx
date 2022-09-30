@@ -7,7 +7,13 @@ import Modalcostum from './Modal';
 import { NewClint } from './NewClint';
 import List from './list';
 import Filter from './Filter';
+import { useSelector } from 'react-redux';
 export default function Clint() {
+
+  const { data } = useSelector((store) => store.login);
+  const {allClients} = useSelector((store)=>store.client)
+ 
+
   return (
     <Box
       fontFamily={'sans-serif'}
