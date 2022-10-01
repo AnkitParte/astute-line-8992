@@ -42,10 +42,16 @@ const SignupPage = () => {
   const handleSubmit = (creds)=>{
     dispatch(signupUser(creds))
   }
-  console.log(signupData);
+  //console.log(signupData);
   if(data && data.isAuth){
-    nav("/dashboard");
+    nav("/Dashboard");
   }
+
+  useEffect(()=>{
+    if(data.isAuth){
+      nav("/Dashboard")
+    }
+  },[])
   return (
     <Container>
       <Box

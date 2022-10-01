@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import googleIcon from '../googleIcon.png';
 import Styles from './login.module.css';
 
@@ -40,10 +40,16 @@ const Loginpage = () => {
   const handleSubmit = (creds)=>{
     dispatch(loginUser(creds))
   }
-  console.log(loginData);
+  //console.log(loginData);
   if(data && data.isAuth){
     nav("/Dashboard");
   }
+
+  useEffect(()=>{
+    if(data.isAuth){
+      nav("/Dashboard")
+    }
+  },[])
   return (
     <>
       <Container>

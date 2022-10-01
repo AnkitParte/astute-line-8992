@@ -14,7 +14,7 @@ export const createClient = (creds, token) => {
         data: creds
     };
 
-    return axios(config);
+    return axios(config).then(res=>res);
 
 }
 
@@ -49,7 +49,7 @@ export const patchClients = (id, data) => {
         data: data
     };
 
-    return axios(config);
+    return axios(config).then(res=>res);
 }
 
 export const deleteClients = (id) => {
@@ -61,5 +61,5 @@ export const deleteClients = (id) => {
         }
     };
 
-    return axios(config);
+    return axios(config).then(res=>res);
 }

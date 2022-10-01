@@ -15,7 +15,7 @@ export const createProject = (creds, token) => {
         data: creds
     };
 
-    return axios(config);
+    return axios(config).then(res=>res);
 
 }
 
@@ -52,7 +52,7 @@ export const patchProject = (id, data) => {
         data: data
     };
 
-    return axios(config);
+    return axios(config).then(res=>res);
 
 }
 
@@ -65,5 +65,5 @@ export const deleteProjects = (id) => {
         }
     };
 
-    return axios(config);
+    return axios(config).then(res=>res);
 }

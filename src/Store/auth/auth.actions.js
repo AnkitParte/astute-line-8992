@@ -12,7 +12,7 @@ export const loginUser = (creds) => async (dispatch) => {
     try{
         let res = await axios.post('https://hellobonsaibackend.onrender.com/users/login',creds);
         dispatch({type:LOGIN,payload:res.data});
-        console.log(res.data);
+        console.log(res);
     }
     catch(e){
         dispatch({type: ERROR})
