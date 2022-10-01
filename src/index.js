@@ -1,6 +1,7 @@
-import { ColorModeScript } from '@chakra-ui/react';
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
@@ -10,8 +11,12 @@ const root = ReactDOM.createRoot(container);
 
 root.render(
   <StrictMode>
+     <BrowserRouter>
     <ColorModeScript />
+    <ChakraProvider>
     <App />
+    </ChakraProvider>
+    </BrowserRouter>
   </StrictMode>
 );
 
@@ -24,3 +29,5 @@ serviceWorker.unregister();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+

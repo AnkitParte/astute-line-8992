@@ -42,8 +42,9 @@ import React from 'react';
 import UpComing from '../UpComing';
 import DashBoard from '../DashBoard';
 import Graph from '../Graph';
-import ProjectFront from '../../Project/ProjectFront';
-// import Footer from '../Footer'
+// import ProjectFront from '../../Project/ProjectFront';
+import { Link } from 'react-router-dom';
+
 
 
 export default function Navbar() {
@@ -107,23 +108,29 @@ export default function Navbar() {
         color="gray.600"
         aria-label="Main Navigation"
       >
-        <NavItem>
-          {' '}
-          <Image h={7} ml={5} mr={5} src={dashboard} /> Dashbaord
-        </NavItem>
+        <Link to="Dashboard">
+          <NavItem>
+            {' '}
+            <Image h={7} ml={5} mr={5} src={dashboard} /> Dashbaord
+          </NavItem>
+        </Link>
         {/* <Link to={'/'}> */}
         <NavItem>
+
+
           {' '}
           <Image h={7} ml={5} mr={5} src={clint} />
           Clients
         </NavItem>
         {/* </Link> */}
         {/* <Link to={'/project'}> */}
-        <NavItem>
-          {' '}
-          <Image h={7} ml={5} mr={5} src={project} />{' '}
-          Projects
-        </NavItem>
+        <Link to='/projects'>
+          <NavItem>
+            {' '}
+            <Image h={7} ml={5} mr={5} src={project} />{' '}
+            Projects
+          </NavItem>
+        </Link>
         {/* </Link> */}
         {/* <Link to={'/tasks'}> */}
         {' '}
@@ -179,7 +186,7 @@ export default function Navbar() {
           Taxes
         </NavItem>
       </Flex>
-    </Box>
+    </Box >
   );
   return (
     <Box as="section" bg="#fbfcfc" _dark={{ bg: '#fbfcfc' }} minH="100vh">
@@ -243,10 +250,10 @@ export default function Navbar() {
           {/* <RoutesPage />
           <Clint />
           <ProjectPage /> */}
-          <DashBoard />
-          <UpComing />
-          <Graph />
-          <ProjectFront />
+
+
+          {/* <Footer />
+          <ProjectFront /> */}
 
         </Box>
       </Box>
