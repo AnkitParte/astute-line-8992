@@ -8,15 +8,18 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { RiArrowDropDownLine } from 'react-icons/ri';
 import React from 'react';
 import styles from './navbar.module.css';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const [showProduct, setShowProduct] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   //const [isAuth, setIsAuth] = useState(false);
   const data = useSelector((store)=>store.auth);
+  const Navigate = useNavigate();
   //console.log(data);
   return (
     <>
@@ -87,7 +90,7 @@ const Navbar = () => {
               direction={['column', 'column', 'column', 'row']}
               className={styles.boxOfButton}
             >
-              <Button bg="white" id={styles.navLoginButton}>
+              <Button bg="white" id={styles.navLoginButton} onClick={()=>Navigate("/login")}>
                 LOG IN
               </Button>
               <Spacer />

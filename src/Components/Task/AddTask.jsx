@@ -1,10 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  Box,
-  Flex,
-  Icon,
-  Image,
-  Text,
   Modal,
   useDisclosure,
   Button,

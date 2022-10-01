@@ -6,7 +6,7 @@ import CompanyDetails from './ButtonModal/CompanyDetails'
 import { useSelector } from "react-redux";
 
 const DashBoard = () => {
-  // const name = useSelector(store => store.auth.data.name);
+  const name = useSelector(store => store.auth.data.name);
 
   return (
     <div  >
@@ -15,7 +15,7 @@ const DashBoard = () => {
         <Image src="https://app.hellobonsai.com/packs/static/good-morning-66f0f5841376d77563ac.svg" alt="icon" />
 
         <Text fontSize='35px' color='#4d4d4d' marginInline="2%" marginTop="5%" fontFamily="amerigo bt">
-          {/* Good morning,{" "}{name}! */}
+          Hello,{" "}{name}!
         </Text>
       </Box>
 

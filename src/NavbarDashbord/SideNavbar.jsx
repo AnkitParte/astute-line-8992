@@ -36,17 +36,23 @@ import { FiMenu, FiSearch } from 'react-icons/fi';
 
 import React from 'react';
 import Clint from '../Components/Clint/Clint';
-import ProjectPage from '../Components/Project/ProjectPage';
+import ProjectPage from '../Components/Project_madhu/ProjectPage';
 import DashBoardRoutesPage from '../Router/Routes';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../Store/auth/auth.actions';
+import Footer from '../Components/DashBoard2/Footer';
+import { useDispatch } from 'react-redux';
 
-export default function Navbar() {
+
+export default function DashBoardNavbar() {
   const sidebar = useDisclosure();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   //Todo: Logout is incomplete
-  const Logoutfunction=()=>{
-    logoutUser()
+  const Logoutfunction = () => {
+    dispatch(logoutUser())
+    navigate("/Homepage")
   }
 
   const NavItem = props => {
@@ -107,25 +113,27 @@ export default function Navbar() {
         color="gray.600"
         aria-label="Main Navigation"
       >
-        <NavItem>
-          {' '}
-          <Image h={7} ml={5} mr={5} src={dashboard} /> Dashbaord
-        </NavItem>
-        <Link to={'/'}>
-        <NavItem>
-          {' '}
-          <Image h={7} ml={5} mr={5} src={clint} />
-           Clients
-        </NavItem>
+        <Link to="/Dashboard">
+          <NavItem>
+            {' '}
+            <Image h={7} ml={5} mr={5} src={dashboard} /> Dashbaord
+          </NavItem>
         </Link>
-        <Link to={'/project'}> 
-        <NavItem>
-          {' '}
-          <Image h={7} ml={5} mr={5} src={project} />{' '}
-          Projects
-        </NavItem>
+        <Link to={'/Dashboard/Client'}>
+          <NavItem>
+            {' '}
+            <Image h={7} ml={5} mr={5} src={clint} />
+            Clients
+          </NavItem>
         </Link>
-        <Link to={'/tasks'}>
+        <Link to={'/Dashboard/project'}>
+          <NavItem>
+            {' '}
+            <Image h={7} ml={5} mr={5} src={project} />{' '}
+            Projects
+          </NavItem>
+        </Link>
+        <Link to={'/Dashboard/tasks'}>
           {' '}
           <NavItem>
             {' '}
@@ -142,14 +150,14 @@ export default function Navbar() {
           <Image h={7} ml={5} mr={5} src={invoices} />
           Invoices
         </NavItem>
-        <Link to={"/TimeTracking"} >
-        <NavItem>
-          {' '}
-          <Image h={7} ml={5} mr={5} src={time} />
-          Time Tracking
-        </NavItem>
+        <Link to={"/Dashboard/TimeTracking"} >
+          <NavItem>
+            {' '}
+            <Image h={7} ml={5} mr={5} src={time} />
+            Time Tracking
+          </NavItem>
         </Link>
-        <Link to={'/tasks'}>
+        <Link to={'/Dashboard/tasks'}>
           <NavItem>
             {' '}
             <Image h={7} ml={5} mr={5} src={list} /> Tasks
@@ -223,7 +231,7 @@ export default function Navbar() {
             <Input placeholder="Search for articles..." />
           </InputGroup>
 
-          <Button     borderRadius={"2px"} colorScheme={'#00b188'} bg={'#00b188'}>
+          <Button borderRadius={"2px"} colorScheme={'#00b188'} bg={'#00b188'}>
             <Image h={8} mr={3} src={crown} /> Start Free Trail
           </Button>
 
@@ -240,11 +248,11 @@ export default function Navbar() {
           </Flex>
         </Flex>
 
-        <Box as="main" p="4" bg={'#fbfcfc'}>   
+        <Box as="main" p="4" bg={'#fbfcfc'}>
           {/* Add content here, remove div below  
             <Box borderWidth="4px" borderStyle="dashed" rounded="md" h="96" />*/}
           <DashBoardRoutesPage />
-         
+          <Footer />
         </Box>
       </Box>
     </Box>

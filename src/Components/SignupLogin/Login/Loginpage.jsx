@@ -42,7 +42,7 @@ const Loginpage = () => {
   }
   console.log(loginData);
   if(data && data.isAuth){
-    nav("/dashboard");
+    nav("/Dashboard");
   }
   return (
     <>

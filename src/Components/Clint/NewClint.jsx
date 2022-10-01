@@ -57,7 +57,7 @@ export const NewClint = () => {
   return (
     <div>
     <>
-    <Button borderRadius={"2px"} h={"40px"} w={["130px","130px","190px"]} bg={"#00b289"} colorScheme={"#00b289"} color={"#ffffff"} onClick={onOpen}>NEW CLINT</Button>
+    <Button borderRadius={"2px"} h={"40px"} w={["130px","130px","190px"]} bg={"#00b289"} colorScheme={"#00b289"} color={"#ffffff"} onClick={onOpen}>NEW CLIENT</Button>
     <Modal
       initialFocusRef={initialRef}
       finalFocusRef={finalRef}

@@ -6,7 +6,7 @@ import { NewProject } from './NewProject';
 import Projectlist from './Project_list';
 
 const ProjectPage = () => {
-  return (
+  return (<>
     <Box
       fontFamily={'sans-serif'}
       bg="#fbfcfc"
@@ -33,6 +33,7 @@ const ProjectPage = () => {
         <Projectlist />
       </Box>
     </Box>
+    </>
   );
 };
 

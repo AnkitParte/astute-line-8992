@@ -17,7 +17,7 @@ export default function List(){
   const { data } = useSelector((store) => store.auth);
   const {allClients} = useSelector((store)=>store.client)
   
-
+  console.log(data);
   const dispatch = useDispatch();
 
   useEffect(()=>{
@@ -76,7 +76,7 @@ export default function List(){
           <span>Name</span>
           <span>Email</span>
           <chakra.span textAlign={{ md: "right" }}>Actions</chakra.span>
-        </SimpleGrid><Text>Currently you did'nt have any clints please add a new clint</Text></Flex>:
+        </SimpleGrid><Text textAlign={"center"} p="1rem">Currently you didn't have any clients please add a new client</Text></Flex>:
         allClients?.map((el, pid) => {
           return (
             <Flex

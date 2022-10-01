@@ -44,27 +44,24 @@ const dispatch = useDispatch()
   console.log(finalRef);
 
   const handleSubmit = () => {
-    // if(data && data._id){
-        let token = "63369025bce96dec2c38efa3";
+    if(data && data._id){
+        let token = data._id;
         createProject(input,token);
         
         setTimeout(()=>{
             dispatch(getProjects(token));
         },500);
-    //}
+    }
   };
 
-  useEffect(() => {
-    console.log(input);
-  }, [input]);
 
   useEffect(()=>{
-    // if(data){
-    //     if(data._id){
-            let token = "63369025bce96dec2c38efa3";
+    if(data){
+        if(data._id){
+            let token = data._id;
             dispatch(getClients(token));
-    //     }
-    // }
+        }
+    }
    
 },[])
 

@@ -83,7 +83,7 @@ console.log(allTasks)
           <span>date</span>
           <span>due</span>
           <chakra.span textAlign={{ md: "right" }}>Actions</chakra.span>
-        </SimpleGrid><Text>Currently you did'nt have any tasks please add a new tasks</Text></Flex>:
+        </SimpleGrid><Text textAlign={"center"} p="1rem">Currently you didn't have any tasks please add a new tasks</Text></Flex>:
         allTasks?.map((el, pid) => {
           return (
             <Flex
