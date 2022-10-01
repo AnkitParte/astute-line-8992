@@ -15,13 +15,19 @@ import {
   Button,
   FormLabel,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { loginUser } from '../../../Store/auth/auth.actions';
+import { useSelector,useDispatch } from 'react-redux';
 const initLoginData = {
   email: '',
   password: '',
 };
 const Loginpage = () => {
   const [loginData, setLoginData] = useState(initLoginData);
+  const data = useSelector((store)=>store.auth);
+  const dispatch = useDispatch();
+
+  const nav = useNavigate()
 
   const handleChangeLogin = e => {
     const { name, value } = e.target;
@@ -30,7 +36,14 @@ const Loginpage = () => {
       [name]: value,
     });
   };
+
+  const handleSubmit = (creds)=>{
+    dispatch(loginUser(creds))
+  }
   console.log(loginData);
+  if(data && data.isAuth){
+    nav("/dashboard");
+  }
   return (
     <>
       <Container>
@@ -117,6 +130,7 @@ const Loginpage = () => {
               color="white"
               fontSize={'16px'}
               _hover={{ bg: '#00b280' }}
+              onClick={()=>handleSubmit(loginData)}
             >
               Log in
             </Button>

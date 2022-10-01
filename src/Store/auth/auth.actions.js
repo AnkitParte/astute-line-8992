@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export const LOGIN = "/auth/login";
 export const ERROR = "/auth/error";
 export const LOADING = "/auth/loading";

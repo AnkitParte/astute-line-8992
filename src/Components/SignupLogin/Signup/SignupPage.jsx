@@ -14,16 +14,23 @@ import {
   Select,
   Button,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { signupUser } from '../../../Store/auth/auth.actions';
 const initSignupData = {
   email: '',
-  fname: '',
+  name: '',
   password: '',
   country: '',
   currency: '',
 };
 const SignupPage = () => {
   const [signupData, setSignupData] = useState(initSignupData);
+  const nav = useNavigate();
+
+  const data = useSelector((store)=>store.auth);
+  const dispatch = useDispatch();
+
   const handleChange = e => {
     const { name, value } = e.target;
     setSignupData({
@@ -31,7 +38,14 @@ const SignupPage = () => {
       [name]: value,
     });
   };
+
+  const handleSubmit = (creds)=>{
+    dispatch(signupUser(creds))
+  }
   console.log(signupData);
+  if(data && data.isAuth){
+    nav("/dashboard");
+  }
   return (
     <Container>
       <Box
@@ -88,7 +102,7 @@ const SignupPage = () => {
           />
           <FormLabel color="gray">Full Name</FormLabel>
           <Input
-            name="fname"
+            name="name"
             type="text"
             id="fname"
             onChange={handleChange}
@@ -104,7 +118,7 @@ const SignupPage = () => {
             id="passwordid"
             onChange={handleChange}
             _focus={{ border: '#00b289' }}
-            placeholder="Password"
+            placeholder="Password! length more than 6"
             _hover={{ border: '1px solid #00b289' }}
           />
 
@@ -148,6 +162,7 @@ const SignupPage = () => {
             color="white"
             fontSize={'16px'}
             _hover={{ bg: '#00b280' }}
+            onClick={()=>handleSubmit(signupData)}
           >
             Sign up
           </Button>

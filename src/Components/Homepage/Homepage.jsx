@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
 import { TimeIcon } from '@chakra-ui/icons';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
-import Login from '../Login/Login';
+//import Login from '../Login/Login';
 import Styles from './homepage.module.css';
 import {
   Box,
@@ -16,8 +15,10 @@ import {
   Button,
   Flex,
 } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
 const Homepage = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  //const [isAuth, setIsAuth] = useState(false);
+  const data = useSelector((store)=>store.auth);
   return (
     <Box>
       <Navbar />
@@ -278,7 +279,7 @@ const Homepage = () => {
             </Heading>
             <Box>
               <Button id={Styles.colorBoxButton}>
-                {isAuth ? 'GO TO DASHBOARD' : 'START FREE'}
+                {data.isAuth ? 'GO TO DASHBOARD' : 'START FREE'}
               </Button>
             </Box>
           </Box>

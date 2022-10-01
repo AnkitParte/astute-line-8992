@@ -6,15 +6,17 @@ import {
   Spacer,
   Stack,
   Text,
-  HStack,
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, ChevronDownIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import React from 'react';
 import styles from './navbar.module.css';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [isAuth, setIsAuth] = useState(false);
+  //const [isAuth, setIsAuth] = useState(false);
+  const data = useSelector((store)=>store.auth);
+  //console.log(data);
   return (
     <Box as="div" className={styles.navContainer}>
       <Box as="div">
@@ -42,11 +44,11 @@ const Navbar = () => {
         </HStack> */}
         <Text className={styles.navRightText}>Pricing</Text>
         <Text className={styles.navRightText}>Reviews</Text>
-        {isAuth ? (
+        {data.isAuth ? (
           <Container>
             <Stack>
               <Button w="auto" px="16px" id={styles.navStartButton}>
-                Test Button
+                Go to Dashboard
               </Button>
             </Stack>
           </Container>
