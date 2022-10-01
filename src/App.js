@@ -7,7 +7,7 @@ import SignupLoginRoute from './Components/SignupLogin/SignupLoginRoute';
 function App() {
   return (
     <Box>
-      {/* <Homepage /> */}
+      <Homepage/>
       {/* <Loginpage /> */}
       <SignupPage />
       {/* <SignupLoginNav /> */}

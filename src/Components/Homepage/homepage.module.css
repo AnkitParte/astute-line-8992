@@ -37,7 +37,8 @@
   line-height: 1.5;
   margin-bottom: 20px;
   font-family: 'Amerigo-bt roman opt', sans-serif;
-  color: rgb(77, 77, 77);
+  color: #4c525a;
+  font-weight: 400;
 }
 #firstBoxText {
   font-size: 18px;
@@ -51,7 +52,7 @@
 }
 .homeButtonBox {
   height: 100%;
-  width: 170px;
+  width: 40%;
   background-color: #00b289;
   border: #00b289;
   display: flex;
@@ -59,6 +60,7 @@
   justify-content: center;
   color: #fff;
   font-size: 16px;
+  cursor: pointer;
 }
 @media screen and (max-width: 750px) {
   .homeMainContainer {
