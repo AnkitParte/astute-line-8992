@@ -5,7 +5,7 @@ import ProjectPage from '../Components/Project/ProjectPage'
 import Tasks from '../Components/Task/Tasks'
 import TimeTracking from '../Components/TimeTracking/TimeTracking'
 
-const RoutesPage = () => {
+const DashBoardRoutesPage = () => {
   return (
     <div>
 <Routes>
@@ -19,4 +19,4 @@ const RoutesPage = () => {
   )
 }
 
-export default RoutesPage
+export default DashBoardRoutesPage

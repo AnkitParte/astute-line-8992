@@ -19,36 +19,40 @@ import {
    ModalBody,
   } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createClient } from '../../Store/clients/clients.actions';
+import { createClient, getClients } from '../../Store/clients/clients.actions';
 
 
   //todo:include userid to creds from data comming from useSelector -->store.login
 export const NewClint = () => {
+  const [input ,setinput] =useState({
+    "contactName":"",
+    "name":"",
+    "email":"",
 
-  const { data } = useSelector((store) => store.login);
+})
+  const { data } = useSelector((store) => store.auth);
 
-  const dispatch=useDispatch()
-
-    const [input ,setinput] =useState({
-        "contactName":"",
-        "name":"",
-        "email":"",
-
-    })
+  const dispatch = useDispatch();
+      
+  const handleSubmit=()=>{
+          console.log(input);
+          if(data && data._id){
+              let token = data._id;
+              createClient(input,token);
+              setTimeout(()=>{
+                dispatch(getClients(token))
+            },500);
+          }else{
+            console.log("error")
+          }
+      };
+      
+   
     const { isOpen, onOpen, onClose } = useDisclosure()
 
   const initialRef = useRef(null)
   const finalRef = React.useRef(null)
-  console.log(initialRef)
-  console.log(finalRef)
-  useEffect(()=>{
-    
-    console.log(input)
-  },[input])
 
-  const AddClintfun=()=>{// todo: take token from data
-    dispatch(createClient(input,token))
-  }
 
   return (
     <div>
@@ -69,7 +73,7 @@ export const NewClint = () => {
             <FormLabel>CLINT</FormLabel>
             <Input ref={initialRef} onChange={(e)=>setinput({
                 ...input,
-                "clint":e.target.value
+                "contactName":e.target.value
             })} type="text" placeholder='First name' />
           </FormControl>
           <FormControl mt={4}>
@@ -89,7 +93,7 @@ export const NewClint = () => {
         </ModalBody>
 
         <ModalFooter>
-          <Button onClick={AddClintfun} colorScheme='blue' mr={3}>
+          <Button onClick={handleSubmit}  colorScheme='blue' mr={3}>
             Save
           </Button>
           <Button onClick={onClose}>Cancel</Button>

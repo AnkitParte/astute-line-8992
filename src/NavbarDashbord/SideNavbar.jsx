@@ -37,11 +37,17 @@ import { FiMenu, FiSearch } from 'react-icons/fi';
 import React from 'react';
 import Clint from '../Components/Clint/Clint';
 import ProjectPage from '../Components/Project/ProjectPage';
-import RoutesPage from '../Router/Routes';
+import DashBoardRoutesPage from '../Router/Routes';
 import { Link } from 'react-router-dom';
+import { logoutUser } from '../Store/auth/auth.actions';
 
 export default function Navbar() {
   const sidebar = useDisclosure();
+
+  //Todo: Logout is incomplete
+  const Logoutfunction=()=>{
+    logoutUser()
+  }
 
   const NavItem = props => {
     const { children } = props;
@@ -221,7 +227,7 @@ export default function Navbar() {
             <Image h={8} mr={3} src={crown} /> Start Free Trail
           </Button>
 
-          <Flex align="center">
+          <Flex align="center" gap={10}>
             <Icon color="gray.500" as={FaBell} cursor="pointer" />
             <Avatar
               ml="4"
@@ -230,13 +236,14 @@ export default function Navbar() {
               src="https://avatars.githubusercontent.com/u/30869823?v=4"
               cursor="pointer"
             />
+            <Button onClick={Logoutfunction} borderRadius={"2px"} colorScheme={'#00b188'} bg={'#00b188'} >Logout</Button>
           </Flex>
         </Flex>
 
-        <Box as="main" p="4" bg={'#fbfcfc'}>
+        <Box as="main" p="4" bg={'#fbfcfc'}>   
           {/* Add content here, remove div below  
             <Box borderWidth="4px" borderStyle="dashed" rounded="md" h="96" />*/}
-          <RoutesPage />
+          <DashBoardRoutesPage />
          
         </Box>
       </Box>

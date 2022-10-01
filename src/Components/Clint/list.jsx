@@ -13,27 +13,32 @@ import { deleteClients, getClients } from "../../Store/clients/clients.actions";
 
 
 export default function List(){
-  const { data } = useSelector((store) => store.login);
+
+  const { data } = useSelector((store) => store.auth);
   const {allClients} = useSelector((store)=>store.client)
-//Todo:need to replace data to {allClients} for fetching clints
-const dispatch = useDispatch()
-  var dum = [
-    { name: "Segun Adebayo", email: "sage@chakra.com" },
-    { name: "Josef Nikolas", email: "Josef@mail.com" },
-    { name: "Lazar Nikolov", email: "Lazar@mail.com" },
-    { name: "Abraham", email: "abraham@anu.com" },
-  ];
+  
+
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+          if(data){
+              if(data._id){
+                  let token = data._id;
+                  dispatch(getClients(token));
+              }
+          }
+         
+  },[])
+
+  const DeletClint=(id)=>{
+    // deleteClients(id)
+  }
+
   const dataColor = useColorModeValue("white", "gray.800");
   const bg = useColorModeValue("white", "gray.800");
   const bg2 = useColorModeValue("gray.100", "gray.700");
 
-  // Todo : need to take id for deleting the clint
-  const deleteClintfun=(id)=>{
-dispatch(deleteClients(id))
-  }
-  useEffect(()=>{
-    dispatch(getClients())
-  })
+
 
   return (
     <Flex
@@ -51,7 +56,7 @@ dispatch(deleteClients(id))
         bg={{ md: bg }}
         shadow="lg"
       >
-      {dum.length===0?<Flex
+      {allClients?.length===0?<Flex
         direction={{ md: "row", xl: "column" }}
         bg={dataColor}
       >
@@ -72,7 +77,7 @@ dispatch(deleteClients(id))
           <span>Email</span>
           <chakra.span textAlign={{ md: "right" }}>Actions</chakra.span>
         </SimpleGrid><Text>Currently you did'nt have any clints please add a new clint</Text></Flex>:
-        dum.map((person, pid) => {
+        allClients?.map((el, pid) => {
           return (
             <Flex
               direction={{ md: "row", xl: "column" }}
@@ -104,17 +109,16 @@ dispatch(deleteClients(id))
                 px={10}
                 fontWeight="hairline"
               >
-              <span>{person.name}</span>
-                <span>{person.name}</span>
+              <span>{el.name}</span>
+                <span>{el.name}</span>
                 <chakra.span
                   textOverflow="ellipsis"
-                  overflow="hidden"
                   whiteSpace="nowrap"
                 >
-                  {person.email}
+                  {el.email}
                 </chakra.span>
                 <Flex justify={{ md: "end" }}>
-                  <Button variant="solid" colorScheme="red" size="sm" onClick={()=>deleteClintfun()} >
+                  <Button onClick={()=>DeletClint(el._id)} variant="solid" colorScheme="red" size="sm"  >
                     Delete
                   </Button>
                 </Flex>

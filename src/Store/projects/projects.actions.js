@@ -56,7 +56,7 @@ export const patchProject = (id, data) => {
 
 }
 
-export const deleteProjects = (id) => {
+export const deleteProjects =  (id) => {
     let config = {
         method: 'delete',
         url: `https://hellobonsaibackend.onrender.com/projects/${id}`,

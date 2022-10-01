@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Flex,
@@ -10,20 +10,54 @@ import {
   Input,
   Checkbox,
 } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTasks } from "../../Store/tasks/tasks.actions";
 
 
 export default function TimeTrackingList(){
+  const { data } = useSelector(store => store.auth);
+const [cost,setcost]= useState("")
+  let token = "63369025bce96dec2c38efa3";
+  const {allTasks} = useSelector(state=>state.task)
+  const dispatch = useDispatch()
+const [price,setprice]=useState(0)
   const [date,setdate] =useState("2022-09-16")
   console.log(date)
-  const data = [
-    { name: "Segun AdebayoSegun Adebayo", email: "sage@chakra.com" },
-    { name: "Segun AdebayoSegun Adebayo Nikolas", email: "Josef@mail.com" },
-    { name: "Segun AdebayoSegun Adebayo Nikolov", email: "Lazar@mail.com" },
-    { name: "Segun AdebayoSegun Adebayo", email: "abraham@anu.com" },
-  ];
+ 
   const dataColor = useColorModeValue("white", "gray.800");
   const bg = useColorModeValue("white", "gray.800");
   const bg2 = useColorModeValue("gray.100", "gray.700");
+  const [time, settime] = useState(''); 
+  let t = time.split(':');
+  
+  let ctc = +(price / 60);
+  let sec;
+  if (t.length === 2) {
+    sec = +t[0] * 60 * 60 + +t[1] * 60;
+  } else {
+    sec = +t[0] * 60 * 60;
+  }
+
+  console.log(t);
+  console.log(t.length);
+  //    let hours= Math.floor(sec / 3600)
+  let minutes = Math.floor(sec / 60);
+  const finalcost = Math.floor(ctc * minutes);
+console.log(finalcost)
+
+useEffect(()=>{
+  setcost(finalcost)
+},[finalcost])
+
+  useEffect(()=>{
+    if(data){
+                  if(data._id){
+                let token = data._id;
+                dispatch(getTasks(token));
+            }
+        }
+        
+    },[])
 
   return (
     <Flex
@@ -41,13 +75,13 @@ export default function TimeTrackingList(){
         bg={{ md: bg }}
         shadow="lg"
       >
-      {data.length===0?<Flex
+      {allTasks?.length===0?<Flex
         direction={{ md: "row", xl: "column" }}
         bg={dataColor}
       >
         <SimpleGrid
           spacingY={3}
-          columns={{ md: 1, xl: 4}}
+          columns={{ md: 1, xl: 6}}
           w={{ base: 120, md: "full" }}
           textTransform="uppercase"
           bg={bg2}
@@ -63,7 +97,7 @@ export default function TimeTrackingList(){
           <span>MUMBER</span>
           <chakra.span textAlign={{ md: "right" }}>TIME</chakra.span>
         </SimpleGrid><Text>Currently you did'nt have any clints please add a new clint</Text></Flex>:
-        data.map((person, pid) => {
+        allTasks?.map((el, pid) => {
           return (
             <Flex
               direction={{ md: "row", xl: "column" }}
@@ -87,9 +121,8 @@ export default function TimeTrackingList(){
               <span>task</span>
               <span>PROJECT</span>
                 <span>VALUE</span>
-                <span>MUMBER</span>
                 <span>TIME</span>
-                
+                <span>PRICE PER HOUR</span>
                 <chakra.span textAlign={{ md: "right" }}></chakra.span>
                 
               </SimpleGrid>
@@ -99,22 +132,19 @@ export default function TimeTrackingList(){
                 w="full"
                 py={2}
                 px={10}
-                // fontWeight="hairline"
                 fontSize="14px"
                 lineHeight={"20px"}
                 c="#878787"
               >
-              <Flex justifyContent={"center" } gap={"20px"} ><Checkbox  ></Checkbox>{person.name}</Flex>
-              <span>{person.name}</span>
-                <chakra.span
-                  textOverflow="ellipsis"
-                  overflow="hidden"
-                  whiteSpace="nowrap"
+              <Flex justifyContent={"center" } gap={"20px"} ><Checkbox  ></Checkbox><Input value={el.taskName} /></Flex>
+              <span><Input value={el.projectName} /></span>
+                <span
+                  
                 >
-                  {person.name}
-                </chakra.span>
-                <span><Input w={"150px"} value={date} onChange={(e)=>setdate(e.target.value)} type={"date"} /></span>
-                <span>100.00</span>
+                <Input w={"150px"} value={cost} />
+                </span>
+                <span><Input w={"150px"}  placeholder={"1:00"} onChange={(e)=>settime(e.target.value)}  type={"text"} /></span>
+                <span><Input w={"150px"}  placeholder={"100"} onChange={(e)=>setprice(e.target.value)}  type={"number"} /></span>
 
                 <Flex justify={{ md: "end" }}>
                   <Button variant="solid" colorScheme="red" size="sm">

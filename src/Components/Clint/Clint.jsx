@@ -10,8 +10,6 @@ import Filter from './Filter';
 import { useSelector } from 'react-redux';
 export default function Clint() {
 
-  const { data } = useSelector((store) => store.login);
-  const {allClients} = useSelector((store)=>store.client)
  
 
   return (

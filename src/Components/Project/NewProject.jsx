@@ -20,30 +20,54 @@ import {
   Select,
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createProject } from '../../Store/projects/projects.actions';
+import { createProject, getProjects } from '../../Store/projects/projects.actions';
+import { getClients } from '../../Store/clients/clients.actions';
 export const NewProject = () => {
-
   //Todo need to take clintId to create project from store
   const [input, setinput] = useState({
-    clientId: '',
+    clientName: '',
     projectName: '',
-    ratePerHour: '',
+    ratePerHour: "",
+    currency:"INR",
   });
-  const { data } = useSelector((store) => store.login);
-  const project = useSelector(store => store.project);
-  const dispatch = useDispatch();
+// const [change,setChange] =useState("")
+  const { data } = useSelector((store) => store.auth);
+  const {allClients} = useSelector((store)=>store.client)
+  
+const dispatch = useDispatch()
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = useRef(null);
   const finalRef = React.useRef(null);
   console.log(initialRef);
   console.log(finalRef);
+
+  const handleSubmit = () => {
+    // if(data && data._id){
+        let token = "63369025bce96dec2c38efa3";
+        createProject(input,token);
+        
+        setTimeout(()=>{
+            dispatch(getProjects(token));
+        },500);
+    //}
+  };
+
   useEffect(() => {
     console.log(input);
   }, [input]);
-const CreateProject=()=>{//Todo take token from login redux
-  dispatch(createProject(input,token))
-}
+
+  useEffect(()=>{
+    // if(data){
+    //     if(data._id){
+            let token = "63369025bce96dec2c38efa3";
+            dispatch(getClients(token));
+    //     }
+    // }
+   
+},[])
+
 
   return (
     <div>
@@ -72,9 +96,15 @@ const CreateProject=()=>{//Todo take token from login redux
             <ModalBody pb={6}>
               <FormControl>
                 <FormLabel>CLINT</FormLabel>
-                <Select placeholder="SELECT CLINT">
-                  <option>madhu</option>
-                  <option>sai</option>
+                <Select onChange={e =>
+                  setinput({
+                    ...input,
+                    clientName: e.target.value,
+                  })
+                } placeholder="SELECT CLINT">
+                
+                {allClients?.map((el)=><option  key={el._id} value={el.name} >{el.name}</option>)}
+                
                 </Select>
               </FormControl>
               <FormControl mt={4}>
@@ -84,7 +114,7 @@ const CreateProject=()=>{//Todo take token from login redux
                   onChange={e =>
                     setinput({
                       ...input,
-                      name: e.target.value,
+                      projectName: e.target.value,
                     })
                   }
                   placeholder="PROJECT NAME"
@@ -97,7 +127,7 @@ const CreateProject=()=>{//Todo take token from login redux
                   onChange={e =>
                     setinput({
                       ...input,
-                      rate: e.target.value,
+                      ratePerHour: e.target.value,
                     })
                   }
                   type="number"
@@ -107,7 +137,7 @@ const CreateProject=()=>{//Todo take token from login redux
             </ModalBody>
 
             <ModalFooter>
-              <Button onClick={CreateProject} colorScheme="blue" w={'100%'}>
+              <Button onClick={handleSubmit}  colorScheme="blue" w={'100%'}>
                 Create Project
               </Button>
             </ModalFooter>

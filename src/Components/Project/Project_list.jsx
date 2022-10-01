@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Flex,
@@ -10,29 +10,46 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
+import { getClients } from "../../Store/clients/clients.actions";
+import { deleteProjects, getProjects } from "../../Store/projects/projects.actions";
 
 
 export default function Projectlist(){
-  const {allClients} = useSelector((store)=>store.client);
-  const {data} = useSelector((store)=>store.login);
-  const {allProjects} = useSelector((store)=>store.project)
-const dispatch = useDispatch()
+
+
   const [date,setdate] =useState("2022-09-16")
   console.log(date)
-  const dum = [
-    { name: "Segun Adebayo", email: "sage@chakra.com" },
-    { name: "Josef Nikolas", email: "Josef@mail.com" },
-    { name: "Lazar Nikolov", email: "Lazar@mail.com" },
-    { name: "Abraham", email: "abraham@anu.com" },
-  ];
+const dispatch = useDispatch()
+  const {data} = useSelector((store)=>store.auth);
+  const {allProjects} = useSelector((store)=>store.project)
+  
+  useEffect(()=>{
+          if(data){
+              if(data._id){
+                  let token = data._id;
+                  // dispatch(getClients(token));
+                  dispatch(getProjects(token));
+              }
+          }
+          
+      },[])
+
+
+
   const dataColor = useColorModeValue("white", "gray.800");
   const bg = useColorModeValue("white", "gray.800");
   const bg2 = useColorModeValue("gray.100", "gray.700");
 
-//Todo need to take id from map
+
   const DeleteProject=(id)=>{
 
+    deleteProjects(id)
+    let token ="63369025bce96dec2c38efa3";
+    setTimeout(() => {
+      dispatch(getProjects(token))
+    }, 500);
   }
+  console.log(allProjects);
 
   return (
     <Flex
@@ -50,7 +67,7 @@ const dispatch = useDispatch()
         bg={{ md: bg }}
         shadow="lg"
       >
-      {dum.length===0?<Flex
+      {allProjects?.length===0?<Flex
         direction={{ md: "row", xl: "column" }}
         bg={dataColor}
       >
@@ -71,8 +88,8 @@ const dispatch = useDispatch()
           <span>date</span>
           <span>due</span>
           <chakra.span textAlign={{ md: "right" }}>Actions</chakra.span>
-        </SimpleGrid><Text>Currently you did'nt have any clints please add a new clint</Text></Flex>:
-        dum.map((person, pid) => {
+        </SimpleGrid><Text>Currently you did'nt have any Projects please add a new Projects</Text></Flex>:
+        allProjects?.map((el, pid) => {
           return (
             <Flex
               direction={{ md: "row", xl: "column" }}
@@ -106,19 +123,19 @@ const dispatch = useDispatch()
                 px={10}
                 fontWeight="hairline"
               >
-              <span>{person.name}</span>
-              <span>{person.name}</span>
+              <span>{el.projectName}</span>
+              <span>{el.clientName}</span>
                 <span><Input value={date} onChange={(e)=>setdate(e.target.value)} type={"date"} /></span>
                 <chakra.span
                   textOverflow="ellipsis"
                   overflow="hidden"
                   whiteSpace="nowrap"
                 >
-                  {person.name}
+                  {el.ratePerHour}
                 </chakra.span>
-                <spam>madhu</spam>
+                <spam>{0}</spam>
                 <Flex justify={{ md: "end" }}>
-                  <Button onClick={()=>DeleteProject(id)} variant="solid" colorScheme="red" size="sm">
+                  <Button onClick={()=>DeleteProject(el._id)} variant="solid" colorScheme="red" size="sm">
                     Delete
                   </Button>
                 </Flex>
