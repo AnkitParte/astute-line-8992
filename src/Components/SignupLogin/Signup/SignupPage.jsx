@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Styles from './signup.module.css';
 import googleIcon from '../googleIcon.png';
 import {
@@ -28,7 +28,7 @@ const SignupPage = () => {
   const [signupData, setSignupData] = useState(initSignupData);
   const nav = useNavigate();
 
-  const data = useSelector((store)=>store.auth);
+  const data = useSelector(store => store.auth);
   const dispatch = useDispatch();
 
   const handleChange = e => {
@@ -38,14 +38,17 @@ const SignupPage = () => {
       [name]: value,
     });
   };
+  console.log(data);
+  const handleSubmit = creds => {
+    dispatch(signupUser(creds));
+    if (data.error) {
+      alert('User Already Exist!!!');
+    }
+  };
+  if (data && data.isAuth) {
+    nav('/dashboard');
+  }
 
-  const handleSubmit = (creds)=>{
-    dispatch(signupUser(creds))
-  }
-  console.log(signupData);
-  if(data && data.isAuth){
-    nav("/dashboard");
-  }
   return (
     <Container>
       <Box
@@ -162,7 +165,7 @@ const SignupPage = () => {
             color="white"
             fontSize={'16px'}
             _hover={{ bg: '#00b280' }}
-            onClick={()=>handleSubmit(signupData)}
+            onClick={() => handleSubmit(signupData)}
           >
             Sign up
           </Button>
