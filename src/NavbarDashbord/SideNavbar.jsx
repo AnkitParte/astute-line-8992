@@ -100,11 +100,11 @@ export default function DashBoardNavbar() {
       {...props}
     >
       <Flex px="4" py="5" align="center">
-        <Image
+        <Link to="/"><Image
           src={
             'https://app.hellobonsai.com/packs/static/bonsai-623ed86a47a195e7f9e2.svg'
           }
-        />
+        /></Link>
       </Flex>
       <Flex
         direction="column"
