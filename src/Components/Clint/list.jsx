@@ -20,6 +20,13 @@ export default function List(){
   console.log(data);
   const dispatch = useDispatch();
 
+  const DeletClint=(id)=>{
+    deleteClients(id);
+    let token = data._id;
+    setTimeout(() => {
+      dispatch(getClients(token))
+    }, 500);
+  }
   useEffect(()=>{
           if(data){
               if(data._id){
@@ -30,9 +37,7 @@ export default function List(){
          
   },[])
 
-  const DeletClint=(id)=>{
-    // deleteClients(id)
-  }
+
 
   const dataColor = useColorModeValue("white", "gray.800");
   const bg = useColorModeValue("white", "gray.800");

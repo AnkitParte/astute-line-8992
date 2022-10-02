@@ -70,25 +70,25 @@ export const NewClint = () => {
         <ModalCloseButton/>
         <ModalBody pb={6}>
           <FormControl>
-            <FormLabel>CLINT</FormLabel>
+            <FormLabel>CONTACT NAME</FormLabel>
             <Input ref={initialRef} onChange={(e)=>setinput({
                 ...input,
                 "contactName":e.target.value
-            })} type="text" placeholder='First name' />
+            })} type="text" placeholder='ENTER CONTACT NAME' />
           </FormControl>
           <FormControl mt={4}>
-            <FormLabel>CONTACT NAME</FormLabel>
+            <FormLabel>CLIENT NAME</FormLabel>
             <Input type={"text"} onChange={(e)=>setinput({
                 ...input,
                 "name":e.target.value
-            })} placeholder='Last name' />
+            })} placeholder='ENTER CLIENT' />
           </FormControl>
           <FormControl>
             <FormLabel>CONTACT EMAIL </FormLabel>
             <Input ref={initialRef} onChange={(e)=>setinput({
                 ...input,
                 "email":e.target.value
-            })} type="text" placeholder='First name' />
+            })} type="text" placeholder='ENTER CLIENT EMAIL' />
           </FormControl>
         </ModalBody>
 

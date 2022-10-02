@@ -100,7 +100,7 @@ export const AddTask = () => {
                       taskName: e.target.value,
                     })
                   }
-                  placeholder="TITLE"
+                  placeholder="ENTER TASK NAME"
                 />
               </FormControl>
               <FormControl>

@@ -128,7 +128,7 @@ const dispatch = useDispatch()
                     })
                   }
                   type="number"
-                  placeholder="100.00"
+                  placeholder="ENTER RATE/HOUR"
                 />
               </FormControl>
             </ModalBody>

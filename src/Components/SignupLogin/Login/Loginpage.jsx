@@ -49,7 +49,7 @@ const Loginpage = () => {
 
   useEffect(()=>{
     if(data && data.isAuth){
-      return nav("/user/Dashboard/")
+      nav("/user/Dashboard/")
     }
     return (()=>{})
   },[])
