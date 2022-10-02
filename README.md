@@ -1,8 +1,25 @@
-# astute-line-8992
+<h2 align="center" >Project name: hellobonsai.com</h2>
 
 <p align="center"><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=35&duration=4000&pause=300&color=00B289&vCenter=true&width=1000&height=65&lines=Hey+There!;It's+Team+Hello+Bonsai.;Clone%3A+Hello+Bonsai+Freelance+Time+Tracking." alt="Typing SVG" /></a></p>
+ <h3>Hello Bonsai is a freelance business management application that allows freelancers to send proposals, create contracts, generate invoices, and more. It also comes with expense tracking and financial management features to help you monitor your expenses.</h3>
 
+## Technologies we used
+[![React](https://img.shields.io/badge/React_(17.0.2)-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 
+[![GPLv3 License](https://img.shields.io/badge/Redux_(4.1.2)-593D88?style=for-the-badge&logo=redux&logoColor=white)](https://opensource.org/licenses/)
+
+[![AGPL License](https://img.shields.io/badge/Chakra%20UI-3bc7bd?style=for-the-badge&logo=chakraui&logoColor=white)](http://www.gnu.org/licenses/agpl-3.0)
+
+[![AGPL License](https://img.shields.io/badge/Rest_API-02303A?style=for-the-badge&logo=react-router&logoColor=white)](http://www.gnu.org/licenses/agpl-3.0)
+
+[![AGPL License](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](http://www.gnu.org/licenses/agpl-3.0)
+
+ ## 🚀 Our Team Members:-
+- Ankit Parte [[LinkedIn Profile](https://www.linkedin.com/in/ankit-parte-sharingon/)]
+- Sahnawaz Hussain [[LinkedIn Profile](https://www.linkedin.com/in/sahnawaz-07-hussain/)]
+- Vijay Singh Rathore [[LinkedIn Profile](https://www.linkedin.com/in/vijay-singh-rathore-738860166/)]
+- Madhusainadh Lalam  [[LinkedIn Profile](https://www.linkedin.com/in/madhusainadh-lalam-aba64b204/)] 
+- Abirami Rajasekar [[LinkedIn Profile](https://www.linkedin.com/in/abirami-rajasekar-1a2bb215b/)]
 
 <h2>Landing page</h2>
 <img src="https://user-images.githubusercontent.com/101489367/193447235-0c4766fd-d86e-4e06-996d-1ac52f8a5efd.png" alt="landing_page"/>
