@@ -1,5 +1,7 @@
 # astute-line-8992
 
+<p align="center"><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=35&duration=4000&pause=300&color=00B289&vCenter=true&width=1000&height=65&lines=Hey+There!;It's+Team+Hello+Bonsai.;Clone%3A+Hello+Bonsai+Freelance+Time+Tracking." alt="Typing SVG" /></a></p>
+
 
 
 <h2>Landing page</h2>
