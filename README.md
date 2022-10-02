@@ -27,3 +27,6 @@
 
 <h2>Time Tracking</h2>
 <img src="https://user-images.githubusercontent.com/101489367/193447593-648d0efa-edfa-4959-b080-3fedd09e0a7b.png" alt="time_tracking"/>
+
+<h2>Modal (Chakra-UI)</h2>
+<img src="https://user-images.githubusercontent.com/101489367/193451329-b3d177ac-da81-4920-a766-7308e360ae93.png" alt="moda(chakra-ui)"/>
