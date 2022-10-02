@@ -16,9 +16,11 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 const Homepage = () => {
   //const [isAuth, setIsAuth] = useState(false);
   const data = useSelector((store)=>store.auth);
+  const Navigate = useNavigate();
   return (
     <Box>
       <Navbar />
@@ -280,7 +282,7 @@ const Homepage = () => {
               Simplify your workflow with Bonsai time tracking.
             </Heading>
             <Box>
-              <Button id={Styles.colorBoxButton}>
+              <Button id={Styles.colorBoxButton} onClick={()=>Navigate("/user/Dashboard/")}>
                 {data.isAuth ? 'GO TO DASHBOARD' : 'START FREE'}
               </Button>
             </Box>

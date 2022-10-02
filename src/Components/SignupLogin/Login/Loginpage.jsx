@@ -23,7 +23,7 @@ const initLoginData = {
   password: '',
 };
 const Loginpage = () => {
-  const [loginData, setLoginData] = useState(initLoginData);
+  const [loginData, setLoginData] = useState({});
   const data = useSelector((store)=>store.auth);
   const dispatch = useDispatch();
 
@@ -39,17 +39,24 @@ const Loginpage = () => {
 
   const handleSubmit = (creds)=>{
     dispatch(loginUser(creds))
+    if(data && data.isAuth){
+      alert("login successful")
+      return nav("/user/Dashboard/");
+    }
   }
-  //console.log(loginData);
-  if(data && data.isAuth){
-    nav("/Dashboard");
-  }
+  console.log(loginData);
+
 
   useEffect(()=>{
-    if(data.isAuth){
-      nav("/Dashboard")
+    if(data && data.isAuth){
+      return nav("/user/Dashboard/")
     }
+    return (()=>{})
   },[])
+
+  if(data && data.isAuth){
+    return nav("/user/Dashboard/");
+  }
   return (
     <>
       <Container>
@@ -95,7 +102,6 @@ const Loginpage = () => {
             </Text>
             <Input
               id="email"
-              type="email"
               name="email"
               onChange={handleChangeLogin}
               placeholder="Email"

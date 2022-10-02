@@ -5,18 +5,19 @@ import ProjectPage from '../Components/Project_madhu/ProjectPage'
 import Tasks from '../Components/Task/Tasks'
 import TimeTracking from '../Components/TimeTracking/TimeTracking'
 import DashBoardPage from "../Components/AllRouter/DashBoardPage"
+import PrivateRoute from '../FinalRoute/PrivateRoute'
 
 const DashBoardRoutesPage = () => {
   return (
     <div>
-<Routes>
-<Route path='/Dashboard/Client' element={<Clint/>} />
-<Route path="/Dashboard/project" element={<ProjectPage/>}/>
-<Route path='/Dashboard/tasks' element={<Tasks/>}/>
-<Route path='/Dashboard/TimeTracking' element={<TimeTracking/>}  />
-<Route path="/Dashboard" element={<DashBoardPage/>}/>
-</Routes>
-      
+      <Routes>
+        <Route path="/user/Dashboard/Client" element={<PrivateRoute><Clint /></PrivateRoute>} />
+        <Route path="/user/Dashboard/project" element={<PrivateRoute><ProjectPage /></PrivateRoute>} />
+        <Route path="/user/Dashboard/tasks" element={<PrivateRoute><Tasks /></PrivateRoute>} />
+        <Route path="/user/Dashboard/TimeTracking" element={<PrivateRoute><TimeTracking /></PrivateRoute>} />
+        <Route path="/user/Dashboard/" element={<PrivateRoute><DashBoardPage /></PrivateRoute>} />
+      </Routes>
+
     </div>
   )
 }

@@ -79,7 +79,7 @@ const Navbar = () => {
         {data.isAuth ? (
           <Container>
             <Stack>
-              <Button w="auto" px="16px" id={styles.navStartButton}>
+              <Button w="auto" px="16px" id={styles.navStartButton} onClick={()=>Navigate("/user/Dashboard/")}>
                 Go to Dashboard
               </Button>
             </Stack>

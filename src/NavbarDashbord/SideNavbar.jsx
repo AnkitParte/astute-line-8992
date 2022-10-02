@@ -38,21 +38,21 @@ import React from 'react';
 import Clint from '../Components/Clint/Clint';
 import ProjectPage from '../Components/Project_madhu/ProjectPage';
 import DashBoardRoutesPage from '../Router/Routes';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { logoutUser } from '../Store/auth/auth.actions';
 import Footer from '../Components/DashBoard2/Footer';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 export default function DashBoardNavbar() {
   const sidebar = useDisclosure();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const {isAuth} = useSelector(store=>store.auth);
   //Todo: Logout is incomplete
   const Logoutfunction = () => {
     dispatch(logoutUser())
-    navigate("/Homepage")
+    navigate("/")
   }
 
   const NavItem = props => {
@@ -113,27 +113,27 @@ export default function DashBoardNavbar() {
         color="gray.600"
         aria-label="Main Navigation"
       >
-        <Link to="/Dashboard">
+        <Link to="/user/Dashboard/">
           <NavItem>
             {' '}
             <Image h={7} ml={5} mr={5} src={dashboard} /> Dashbaord
           </NavItem>
         </Link>
-        <Link to={'/Dashboard/Client'}>
+        <Link to={'/user/Dashboard/Client'}>
           <NavItem>
             {' '}
             <Image h={7} ml={5} mr={5} src={clint} />
             Clients
           </NavItem>
         </Link>
-        <Link to={'/Dashboard/project'}>
+        <Link to={'/user/Dashboard/project'}>
           <NavItem>
             {' '}
             <Image h={7} ml={5} mr={5} src={project} />{' '}
             Projects
           </NavItem>
         </Link>
-        <Link to={'/Dashboard/tasks'}>
+        <Link to={'/user/Dashboard/tasks'}>
           {' '}
           <NavItem>
             {' '}
@@ -150,14 +150,14 @@ export default function DashBoardNavbar() {
           <Image h={7} ml={5} mr={5} src={invoices} />
           Invoices
         </NavItem>
-        <Link to={"/Dashboard/TimeTracking"} >
+        <Link to={"/user/Dashboard/TimeTracking"} >
           <NavItem>
             {' '}
             <Image h={7} ml={5} mr={5} src={time} />
             Time Tracking
           </NavItem>
         </Link>
-        <Link to={'/Dashboard/tasks'}>
+        <Link to={'/user/Dashboard/tasks'}>
           <NavItem>
             {' '}
             <Image h={7} ml={5} mr={5} src={list} /> Tasks
@@ -191,6 +191,9 @@ export default function DashBoardNavbar() {
       </Flex>
     </Box>
   );
+  if(!isAuth){
+    return <Box>401 unauthorized</Box>
+  }
   return (
     <Box as="section" bg="#fbfcfc" _dark={{ bg: '#fbfcfc' }} minH="100vh">
       <SidebarContent display={{ base: 'none', md: 'unset' }} />
@@ -241,7 +244,7 @@ export default function DashBoardNavbar() {
               ml="4"
               size="sm"
               name="anubra266"
-              src="https://avatars.githubusercontent.com/u/30869823?v=4"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKcAAAB2CAMAAACaqnNUAAAAY1BMVEX///8AAADq6uo2NjZ9fX36+vrh4eFBQUHn5+fV1dW7u7v39/cgICDy8vJTU1O2trbKysp2dnYvLy+Hh4dLS0tpaWlubm4pKSmsrKyampoYGBhYWFjBwcFhYWGjo6MNDQ2QkJCZOBqiAAAEO0lEQVR4nO2b15ajMAyGKTE19EAagbz/U+6yliiBDGYi45w9/i4Hj/nHtoolxjA0Go1Go9Fo/hNCqyNULeNHwqDI7q5t2+49K4Iv1eo0uTklbxzVomY45dGccyy/S6lXLYjkVJ5qcQAzWPNWZUfDVEvkhI8fZZrm4wssihn+9GCeyuyQlafpMfUN5Wvq30YGXqRe1ClikZcWI/O/+V8kM66n+xvW8dcIdc6oxE4XHqc2Pj6rdVAu6siixedRhgPcnZVNKFBF8nZIgkOKHXW9kK7LZIPQpYOxD/aqzA4Uau+kasYFBFxXxl1h3GUXVTPCk6iFgLWd1MSlmr+9Xfc4TsuH1juomnMXt2PwCw/pmhbwwMVbAmMtPvSoIscDM86EBmcijkEOB/7qQGhwoM7Xc+eZi2z7343PVbnQkK9QLDgcUqf9PZPHX3wQHA6nZH9DSrfFmIuqGB9sMaPNw+lIti1QqsoxJdtCYa1KZ7DtxYmqfffFcjoEcrv9r3MQsivB4ZV4MkAMJJ9iBQQGKahkTUvwCHMU20komohGL0qeWxw9uPmnVEXLgKcRSy3sbV6MkigX9/TgHPLlYoRkILWI1y2JxduSFlocU/SE4gVaUY2p5G9v15yiBdfNchdVc+DUmfHPxy7C8qKi2iLDILNyl8OSXaWsqGxhybh8r4DB6RC9SUkBfKhpPt6ZiNM3GdQUQ4C+AHpcztiCvsmgsPzZcUcd5n1uJv7oqQJtA17RF+A7Q5lubT1u0tkHdQV6JzNfqZradxzHr5t5J/Ghxi95h9tMSsftfD4vP2kVdGVZ0y5qWeG6a0GEGf558nr3jayOaQux3dU9PSfvztIoef1GALGDyC8mPyl2W1JvvHzuhUf3pDTnlPzazJL76If5TvZUj9buNPQ0mXeNx6uax1evD6csHSm97dL4SMYvfInrVpo0RVVWRXNJX8N5MHK1jXyZw9Fsnxt/tRk69Zns1GmQ6W4/Zs7Q6BatT/ySwXR/l1dcB6Eyzb5fzV+6QTb6rkDiiuJ9TLQKsoTTOzXREtpmgt4bfXIP7xN8WX1ZB83V/axcwPoUX4bDZ1hy+2w1/03VX5kiCe4Jbej8efGl/5MlFEjwst5SbJaHR4g+e8KZaTpA+Feb1BuPn/o9iecjdk4WLOeJbEbIn1raTuKT8HBy0MuJ9e8FweWkLBZAqL9R3u0wfSCc0jButCf+LwyWkza9xWyBzuSxZUBbXg/B29P1PEs5CQ74JrKvhRy4nlEXMCM+7ZHKkjZ9AbSFA+3GV9TnCAloNx58PP2FhrWU7g76RDJ6qBA8aQ5oIsfaO8DiaS4gcBeWcUnwKcNxRh+HEUhGSDwJtNM+vhUtzs2LoysNPcG5eP1KTnOSRzqbIoJ43HnYBxnwNSBJlrF9LROKs691ap1frfNoy4YkA2WeJRtP+X/PaTQajUaj0bzlD1VIK+0UjBTHAAAAAElFTkSuQmCC"
               cursor="pointer"
             />
             <Button onClick={Logoutfunction} borderRadius={"2px"} colorScheme={'#00b188'} bg={'#00b188'} >Logout</Button>

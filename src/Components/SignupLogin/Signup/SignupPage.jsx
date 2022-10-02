@@ -25,7 +25,7 @@ const initSignupData = {
   currency: '',
 };
 const SignupPage = () => {
-  const [signupData, setSignupData] = useState(initSignupData);
+  const [signupData, setSignupData] = useState({});
   const nav = useNavigate();
 
   const data = useSelector(store => store.auth);
@@ -38,7 +38,7 @@ const SignupPage = () => {
       [name]: value,
     });
   };
-  console.log(data);
+  console.log(signupData);
   const handleSubmit = creds => {
     dispatch(signupUser(creds));
     if (data.error) {
@@ -46,7 +46,7 @@ const SignupPage = () => {
     }
   };
   if (data && data.isAuth) {
-    nav('/Dashboard');
+    nav('/user/Dashboard');
   }
 
   return (
@@ -95,7 +95,6 @@ const SignupPage = () => {
           <FormLabel color="gray">Email</FormLabel>
           <Input
             name="email"
-            type="email"
             id="emailid"
             onChange={handleChange}
             _focus={{ border: '#00b289' }}

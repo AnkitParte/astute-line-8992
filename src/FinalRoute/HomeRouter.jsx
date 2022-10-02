@@ -9,6 +9,7 @@ import TimeTracking from '../Components/TimeTracking/TimeTracking';
 import DashBoardNavbar from '../NavbarDashbord/SideNavbar';
 import Loginpage from "../Components/SignupLogin/Login/Loginpage";
 import SignupPage from "../Components/SignupLogin/Signup/SignupPage"
+import PrivateRoute from './PrivateRoute';
 //import DashBoardRoutesPage from '../Router/Routes';
 
 const HomeRouter = () => {
@@ -18,13 +19,13 @@ const HomeRouter = () => {
                 <Route path="/login" element={<Loginpage />}></Route>
                 <Route path="/signup" element={<SignupPage />}></Route>
 
-                <Route path="/Homepage" element={<Homepage />} />
-                <Route path="/" element={<DashBoardNavbar />}>
-                    <Route path="/Dashboard/Client" element={<Clint />} />
-                    <Route path="/Dashboard/project" element={<ProjectPage />} />
-                    <Route path="/Dashboard/tasks" element={<Tasks />} />
-                    <Route path="/Dashboard/TimeTracking" element={<TimeTracking />} />
-                    <Route path="/Dashboard" element={<DashBoardPage />} />
+                <Route path="/" element={<Homepage />} />
+                <Route path="/" element={<PrivateRoute><DashBoardNavbar /></PrivateRoute>}>
+                    <Route path="/user/Dashboard/Client" element={<PrivateRoute><Clint /></PrivateRoute>} />
+                    <Route path="/user/Dashboard/project" element={<PrivateRoute><ProjectPage /></PrivateRoute>} />
+                    <Route path="/user/Dashboard/tasks" element={<PrivateRoute><Tasks /></PrivateRoute>} />
+                    <Route path="/user/Dashboard/TimeTracking" element={<PrivateRoute><TimeTracking /></PrivateRoute>} />
+                    <Route path="/user/Dashboard/" element={<PrivateRoute><DashBoardPage /></PrivateRoute>} />
                 </Route>
 
             </Routes>
