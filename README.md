@@ -47,3 +47,5 @@
 
 <h2>Modal (Chakra-UI)</h2>
 <img src="https://user-images.githubusercontent.com/101489367/193451329-b3d177ac-da81-4920-a766-7308e360ae93.png" alt="moda(chakra-ui)"/>
+ 
+  <h3 align="center"><i>Thank You for visiting our Project Repository.</i></h3> 
