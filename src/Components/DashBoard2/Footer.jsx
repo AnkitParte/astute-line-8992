@@ -8,7 +8,7 @@ const Footer = () => {
                 <Box lineHeight="300%" >
                     <Box marginInline="5%" textAlign="center" fontFamily="arial, sans-serif">
                         <Flex gap="5%" ml="20%" direction='row' textAlign="center">
-
+                            {/*feedback: fw18_0330 and fw18_0782 - You can use loop here, it seems same just pass text only*/}
                             <a href='DashBoard'>  <Text fontSize="12px" color="#999999" fontWeight="bolder">  Feature Requests </Text></a>
                             <a href='DashBoard'>  <Text fontSize="12px" color="#999999" fontWeight="bolder">  Help Center</Text></a>
                             <a href='DashBoard'>  <Text fontSize="12px" color="#999999" fontWeight="bolder">  Blog & Resources</Text></a>
