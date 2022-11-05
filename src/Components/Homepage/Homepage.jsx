@@ -18,7 +18,7 @@ import {
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-// feedback: fw18_1016, fw18_0782 - can we break this component, it is too long to manage.
+// feedback: fw18_1016, fw18_0782 and fw18_0044 - can we break this component, it is too long to manage.
 const Homepage = () => {
   //const [isAuth, setIsAuth] = useState(false);
   const data = useSelector((store)=>store.auth);
