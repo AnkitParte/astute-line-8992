@@ -113,6 +113,7 @@ export default function DashBoardNavbar() {
         color="gray.600"
         aria-label="Main Navigation"
       >
+          {/*feedback: fp03_062 and fw18_0782 - You can use loops as they are same, but with different configuration*/}
         <Link to="/user/Dashboard/">
           <NavItem>
             {' '}
