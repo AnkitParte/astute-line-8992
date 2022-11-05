@@ -43,7 +43,7 @@ export default function List(){
   const bg = useColorModeValue("white", "gray.800");
   const bg2 = useColorModeValue("gray.100", "gray.700");
 
-
+// feedback: fw18_0782 and fp03_062 - can we divide this component into smaller pieces?
 
   return (
     <Flex
