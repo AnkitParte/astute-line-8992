@@ -6,7 +6,7 @@ const app = express.Router();
 let userId;
 
 const authMiddleWare = async (req, res, next) => {
-    
+    // feedback: fw18_0044 and fw18_0782 - never use middle ware in every file, you can reuse it every where by importing it
     let token = req.headers.token;
     console.log(token);
 
