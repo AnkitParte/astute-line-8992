@@ -12,7 +12,8 @@ app.post("/login", async (req, res) => {
         if (!checkUser) {
             return  res.status(401).send("Authentication failed, need to sign-up");
         }
-        
+        // feedback: fw18_0044 - You don't need return here, res will automatic return the function flow
+        // Never share plain token with user, encode it using standard libraries 
        return  res.status(200).send({
             token:`${checkUser.id}:${checkUser.email}:${checkUser.name}`
         })
