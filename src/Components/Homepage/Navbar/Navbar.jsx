@@ -20,7 +20,7 @@ const Navbar = () => {
   //const [isAuth, setIsAuth] = useState(false);
   const data = useSelector((store)=>store.auth);
   const Navigate = useNavigate();
-  //console.log(data);
+  console.log(data);
   return (
     <>
     <Box as="div" className={styles.navContainer}>
