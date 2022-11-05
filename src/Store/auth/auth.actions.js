@@ -6,7 +6,8 @@ export const LOADING = "/auth/loading";
 export const SIGNUP = "/auth/signup";
 export const LOGOUT = "/auth/logout"; 
 
-
+// feedback: fw18_0782 - Use URLs constant or env config because project includes different environments 
+// create dynamic URLs based on environment config
 export const loginUser = (creds) => async (dispatch) => {
     dispatch({ type: LOADING });
     try{
