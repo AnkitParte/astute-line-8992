@@ -28,6 +28,7 @@ export const Addhours = () => {
   let phc = 10;
   let ctc = +(phc / 60);
   let sec;
+  // feedback: fw18_0782 and fp03_062 - you can use value constant here that will be better approach ex: const oneHour = 3600;
   if (t.length === 2) {
     sec = +t[0] * 60 * 60 + +t[1] * 60;
   } else {
