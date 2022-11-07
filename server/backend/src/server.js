@@ -14,6 +14,7 @@ app.use("/clients", clientRouter);
 app.use("/projects", projectRouter);
 app.use("/tasks", taskRouter);
 app.listen(5000, async () => {
+    // feedback: fw18_0044 - Db connection should be done outside this
     await connect();
     console.log("User heat the server!!");
 })
