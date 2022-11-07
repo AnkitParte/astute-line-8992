@@ -8,6 +8,6 @@ const projectSchema = new mongoose.Schema({
     ratePerHour:{type:Number,required:true}
     
 })
-
+// feedback: fw18_0782 and fw18_0044 - Model name should be in Pascal case
 const Project = mongoose.model("project", projectSchema);
 module.exports = Project;
