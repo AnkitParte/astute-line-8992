@@ -5,6 +5,7 @@ const User = require("../Users/userModel");
 const app = express.Router();
 let userId;
 
+// feedback: fw18_0044 and fw18_0782 - never write middleware in every file, you can reuse it every where by importing it
 const authMiddleWare = async (req, res, next) => {
     
     let token = req.headers.token;
