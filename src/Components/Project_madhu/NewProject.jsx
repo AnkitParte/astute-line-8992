@@ -44,6 +44,8 @@ const dispatch = useDispatch()
   console.log(finalRef);
 
   const handleSubmit = () => {
+    // feedback: fp03_062 and fw18_0782 - You can optimise this code, use JS features
+    // if (data?._id)
     if(data && data._id){
         let token = data._id;
         createProject(input,token);
