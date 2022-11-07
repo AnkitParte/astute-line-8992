@@ -39,6 +39,7 @@ if(data){
 const DeleteTask=(id)=>{
 
   deleteTasks(id)
+  // feedback: fp03_062 and fw18_0782 - why are we using static token here?
   let token ="63369025bce96dec2c38efa3";
   setTimeout(() => {
     dispatch(getTasks(token))
