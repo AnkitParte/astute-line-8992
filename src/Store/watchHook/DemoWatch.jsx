@@ -10,6 +10,10 @@ let obj = {
     seconds: 0
 }
 
+
+// feedback: fw18_0782 - You can use constant file or JSON file for static data
+// const second = 1, const minute = 60, just an example
+// Static data should be moved out, it reduces the noise in components
 export function getTime(number) {
     var obj = {
         hours: 0,
