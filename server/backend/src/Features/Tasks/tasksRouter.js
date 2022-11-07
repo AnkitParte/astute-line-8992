@@ -14,7 +14,7 @@ const authMiddleWare = async (req, res, next) => {
         // console.log(checkUser, email,id,name);
         if (checkProject.projectName===projectName){
             projectId = id;
-            
+             // feedback: fw18_0044 - Not need to use return , next middleware will be called automatically 
             return next();
         }
         return res.status(401).send("can not perform this operation");
@@ -74,7 +74,7 @@ app.delete("/:id", async (req, res) => {
     let { id } = req.params;
     
     try {
-        
+        // feedback: fw18_0044 - Why do we need new here as options?We don't have it in delete query, only in updates.
         let data = await Tasks.findByIdAndRemove(id,{new:true});
         console.log(data);
         return res.send(data);
