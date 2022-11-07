@@ -5,7 +5,7 @@ const Project = require("./projectsModel");
 const app = express.Router();
 let clientId;
 const authMiddleWare = async (req, res, next) => {
-    
+     // feedback: fw18_0044 - Follow standards, you should you Authorization as header
     let token = req.headers.token;
     console.log(token);
     
