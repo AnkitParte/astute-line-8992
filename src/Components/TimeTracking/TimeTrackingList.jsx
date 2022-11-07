@@ -32,6 +32,7 @@ const [price,setprice]=useState(0)
   
   let ctc = +(price / 60);
   let sec;
+  // feedback: fp03_062 - we can create a util function and resue this code by importing it.
   if (t.length === 2) {
     sec = +t[0] * 60 * 60 + +t[1] * 60;
   } else {
