@@ -9,12 +9,12 @@ const ProjectFront = () => {
     return (
         <div>
             {/* <ProjectNext /> */}
-
+        {/*feedback: fw18_0330 - Don't use URLs directly in the view*/}
             <SimpleGrid columns={[1, 1, 1, 2]} >
                 <Box display="flex" mt="10%" ml="10%" mb="20%" >
                     <Image src="https://app.hellobonsai.com/assets/welcome_states/projects-illustration-24f6d67076405e2e3dc58533a9c79968d2be012d22e6364b3a0a218ea757a273.png" alt="icon" />
 
-
+               {/*feedback: fw18_0330 - You can remove text from here and use it form JSON or constant file*/}     
                 </Box>
                 <Box width="40%" ml="20%" mt="15%" textAlign="center" >
                     <Text fontSize="24px" >Organize Your Projects</Text>
