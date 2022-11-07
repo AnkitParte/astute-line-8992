@@ -61,6 +61,7 @@ const SignupPage = () => {
         box-shadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
         py="30px"
       >
+        {/*feebdback: fw18_0782 and fw18_1016 - this heading should be separated from the signup form as this is not a part of form */}
         <FormControl>
           <Heading
             as="h1"
@@ -69,6 +70,7 @@ const SignupPage = () => {
             align="left"
             // mt="50px"
           >
+              
             Try Bonsai free with your Workflow today.{' '}
           </Heading>
 
@@ -131,6 +133,7 @@ const SignupPage = () => {
             _focus={{ border: '#00b289' }}
             _hover={{ border: '1px solid #00b289' }}
           >
+            {/*feebdback: fw18_0782 and fw18_1016 - use loop for select */}
             <option value="India">India</option>
             <option value="China">China</option>
             <option value="Japan">Japan</option>
