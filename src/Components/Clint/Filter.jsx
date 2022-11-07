@@ -24,6 +24,7 @@ const Filter = () => {
       >
         <Image h={'25px'} w={'35px'} src={search} />
       </Flex>
+     {/*feedback: fp03_062 - you can use loop to render these elements*/}
       <Select  w={'80%'} placeholder="Select option">
         <option value="option1">Option 1</option>
         <option value="option2">Option 2</option>
