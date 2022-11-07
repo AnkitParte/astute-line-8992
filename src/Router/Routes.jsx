@@ -1,6 +1,8 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+// feedback: fw18_0782 and fp03_062 - Spelling mistakes should be avoided
 import Clint from '../Components/Clint/Clint'
+// feedback: fw18_0782 and fp03_062 - file names should be followed in generic manner
 import ProjectPage from '../Components/Project_madhu/ProjectPage'
 import Tasks from '../Components/Task/Tasks'
 import TimeTracking from '../Components/TimeTracking/TimeTracking'
