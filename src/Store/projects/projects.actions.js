@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const PROJECT_POST = "/project/post";
 export const PROJECT_GET = "/project/get";
+export const PROJECT_LOAD = "/project/loader/constant";
 
 //`https://hellobonsaibackend.onrender.com/projects`
 export const createProject = (creds, token) => {
@@ -20,6 +21,7 @@ export const createProject = (creds, token) => {
 }
 
 export const getProjects = (token) => async (dispatch) => {
+    dispatch({type:PROJECT_LOAD});
     try {
         let config = {
             method: 'get',

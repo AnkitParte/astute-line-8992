@@ -13,7 +13,7 @@ import {
   ModalCloseButton,
   ModalBody,
   Select,
-  Checkbox,
+  useToast,
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createTasks, getTasks } from '../../Store/tasks/tasks.actions';
@@ -24,6 +24,7 @@ export const AddTask = () => {
   const dispatch = useDispatch();
   const [input, setinput] = useState({});
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
 
   const initialRef = useRef(null);
   const finalRef = React.useRef(null);
@@ -44,21 +45,29 @@ export const AddTask = () => {
   };
 
   const submittaskfun = () => {
-    if(data && data._id){
-    let token = data._id;
-    createTasks(input, token);
-    setTimeout(() => {
-      dispatch(getTasks(token));
-    }, 500);
+    if (data && data._id) {
+      let token = data._id;
+      createTasks(input, token);
+      toast({
+        title: 'Request sent',
+        description: "Please wait a bit for update",
+        status: 'info',
+        duration: 2000,
+        isClosable: true,
+        position:"top",
+      })
+      setTimeout(() => {
+        dispatch(getTasks(token));
+      }, 500);
     }
   };
 
   useEffect(() => {
-    if(data){
-        if(data._id){
-    let token = data._id;
-    dispatch(getProjects(token));
-    }
+    if (data) {
+      if (data._id) {
+        let token = data._id;
+        dispatch(getProjects(token));
+      }
     }
   }, []);
 

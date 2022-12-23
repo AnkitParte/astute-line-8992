@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Styles from './signup.module.css';
 import googleIcon from '../googleIcon.png';
 import {
@@ -11,22 +11,24 @@ import {
   Text,
   Input,
   FormLabel,
-  Select,
-  Button,
+  Select, InputGroup, InputRightElement,
+  Button, useToast, Spinner
 } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupUser } from '../../../Store/auth/auth.actions';
-const initSignupData = {
-  email: '',
-  name: '',
-  password: '',
-  country: '',
-  currency: '',
-};
+// const initSignupData = {
+//   email: '',
+//   name: '',
+//   password: '',
+//   country: '',
+//   currency: '',
+// };
 const SignupPage = () => {
   const [signupData, setSignupData] = useState({});
   const nav = useNavigate();
+  const toast = useToast()
+  const [show, setShow] = useState(false);
 
   const data = useSelector(store => store.auth);
   const dispatch = useDispatch();
@@ -40,14 +42,8 @@ const SignupPage = () => {
   };
   console.log(signupData);
   const handleSubmit = creds => {
-    dispatch(signupUser(creds));
-    if (data.error) {
-      alert('User Already Exist!!!');
-    }
+    dispatch(signupUser(toast, nav, creds));
   };
-  if (data && data.isAuth) {
-    nav('/user/Dashboard');
-  }
 
   return (
     <Container>
@@ -61,13 +57,14 @@ const SignupPage = () => {
         box-shadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
         py="30px"
       >
+
         <FormControl>
           <Heading
             as="h1"
             size="lg"
             fontWeight={'400'}
             align="left"
-            // mt="50px"
+          // mt="50px"
           >
             Try Bonsai free with your Workflow today.{' '}
           </Heading>
@@ -98,7 +95,7 @@ const SignupPage = () => {
             id="emailid"
             onChange={handleChange}
             _focus={{ border: '#00b289' }}
-            placeholder="Email"
+            placeholder="Enter Your Email"
             mb="25px"
             _hover={{ border: '1px solid #00b289' }}
           />
@@ -109,12 +106,29 @@ const SignupPage = () => {
             id="fname"
             onChange={handleChange}
             _focus={{ border: '#00b289' }}
-            placeholder="Sahnawaz Hussain"
+            placeholder="Enter Your Name"
             mb="25px"
             _hover={{ border: '1px solid #00b289' }}
           />
           <FormLabel color="gray">Password</FormLabel>
-          <Input
+          <InputGroup>
+            <Input
+              name="password"
+              type={show ? "text" : "password"}
+              id="passwordid"
+              onChange={handleChange}
+              _focus={{ border: '#00b289' }}
+              placeholder="Password! length more than 6"
+              _hover={{ border: '1px solid #00b289' }}
+            />
+            <InputRightElement width='4.5rem'>
+              <Button size="sm" bg="#00b289" color="white"
+                _hover={{ bg: "#00b289", color: "white" }}
+                onClick={() => setShow(!show)}
+              >{show ? "Hide" : "Show"}</Button>
+            </InputRightElement>
+          </InputGroup>
+          {/* <Input
             name="password"
             type="password"
             id="passwordid"
@@ -122,7 +136,7 @@ const SignupPage = () => {
             _focus={{ border: '#00b289' }}
             placeholder="Password! length more than 6"
             _hover={{ border: '1px solid #00b289' }}
-          />
+          /> */}
 
           <FormLabel color="gray">Country</FormLabel>
           <Select
@@ -156,8 +170,13 @@ const SignupPage = () => {
             <option value="PKR">PKR</option>
             <option value="BDT">BDT</option>
           </Select>
+          {data.loading &&
+            <Box display="flex" justifyContent="space-around" mt="15px">
+              <Spinner thickness="5px" size="lg" />
+            </Box>
+          }
           <Button
-            mt="25px"
+            mt="20px"
             mb="15px"
             bg="#00b289"
             w="100%"

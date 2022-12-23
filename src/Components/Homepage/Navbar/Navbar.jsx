@@ -15,7 +15,6 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
-  const [showProduct, setShowProduct] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   //const [isAuth, setIsAuth] = useState(false);
   const data = useSelector((store)=>store.auth);

@@ -7,10 +7,10 @@ import {
   chakra,
   useColorModeValue,
   Text,
-  Input,
+  Input,Box,Spinner
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { getClients } from "../../Store/clients/clients.actions";
+//import { getClients } from "../../Store/clients/clients.actions";
 import { deleteProjects, getProjects } from "../../Store/projects/projects.actions";
 
 
@@ -21,7 +21,7 @@ export default function Projectlist() {
   //console.log(date)
   const dispatch = useDispatch()
   const { data } = useSelector((store) => store.auth);
-  const { allProjects } = useSelector((store) => store.project)
+  const { allProjects, projectLoader } = useSelector((store) => store.project)
 
   useEffect(() => {
     if (data) {
@@ -51,7 +51,10 @@ export default function Projectlist() {
   }
   //console.log(allProjects);
 
-  return (
+  return (<>
+    {projectLoader && <Box display="flex" justifyContent="space-around" mb="-30px">
+      <Spinner thickness="5px" size="lg" />
+    </Box>}
     <Flex
       mt={"50px"}
       w="full"
@@ -145,6 +148,7 @@ export default function Projectlist() {
           })}
       </Stack>
     </Flex>
+    </>
   );
 };
 

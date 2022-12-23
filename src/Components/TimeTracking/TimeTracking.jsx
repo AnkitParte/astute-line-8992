@@ -1,8 +1,8 @@
 import { Box, Button, Flex, Select, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
 import Alert from '../Clint/Alert';
-import { AddTask } from '../Task/AddTask';
-import TaskList from '../Task/TaskList';
+// import { AddTask } from '../Task/AddTask';
+// import TaskList from '../Task/TaskList';
 import { Addhours } from './AddHours';
 import TimeTrackingList from './TimeTrackingList';
 

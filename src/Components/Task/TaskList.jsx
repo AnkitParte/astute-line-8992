@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, } from "react";
 import {
   Button,
   Flex,
@@ -8,7 +8,7 @@ import {
   useColorModeValue,
   Text,
   Input,
-  Checkbox,
+  Checkbox,Box, Spinner
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTasks, getTasks } from "../../Store/tasks/tasks.actions";
@@ -17,7 +17,7 @@ import { deleteTasks, getTasks } from "../../Store/tasks/tasks.actions";
 export default function TaskList(){
   const { data } = useSelector(store => store.auth);
 
-const {allTasks} = useSelector(state=>state.task)
+const {allTasks, loadingTasks} = useSelector(state=>state.task)
 
 const dispatch = useDispatch()
 
@@ -46,7 +46,10 @@ const DeleteTask=(id)=>{
 }
 console.log(allTasks)
 
-  return (
+  return (<>
+    {loadingTasks && <Box display="flex" justifyContent="space-around" mb="20px">
+      <Spinner thickness="5px" size="lg" />
+    </Box>}
     <Flex
     mt={"0px"}
       w="full"
@@ -150,6 +153,7 @@ console.log(allTasks)
         })}
       </Stack>
     </Flex>
+    </>
   );
 };
 

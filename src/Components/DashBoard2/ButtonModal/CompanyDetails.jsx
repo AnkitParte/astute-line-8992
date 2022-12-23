@@ -1,4 +1,4 @@
-import { Button, FormControl, SimpleGrid, FormLabel, Box, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, useDisclosure } from "@chakra-ui/react"
+import { Button, FormControl, SimpleGrid, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, useDisclosure } from "@chakra-ui/react"
 import React from "react"
 export default function CompanyDetails() {
     const { isOpen, onOpen, onClose } = useDisclosure()

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Image, Text, Link, Select } from '@chakra-ui/react';
+import { Box, Flex,} from '@chakra-ui/react';
 
 import Alert from "./Alert"
 // import { IoMdAlert } from "react-icons/io";
@@ -7,7 +7,7 @@ import Modalcostum from './Modal';
 import { NewClint } from './NewClint';
 import List from './list';
 import Filter from './Filter';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 export default function Clint() {
 
  

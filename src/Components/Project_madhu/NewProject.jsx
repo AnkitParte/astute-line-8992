@@ -1,10 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  Box,
-  Flex,
-  Icon,
-  Image,
-  Text,
   Modal,
   useDisclosure,
   Button,
@@ -18,6 +13,7 @@ import {
   ModalCloseButton,
   ModalBody,
   Select,
+  useToast,
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createProject, getProjects } from '../../Store/projects/projects.actions';
@@ -34,7 +30,8 @@ export const NewProject = () => {
   const { data } = useSelector((store) => store.auth);
   const {allClients} = useSelector((store)=>store.client)
   
-const dispatch = useDispatch()
+  const dispatch = useDispatch()
+  const toast = useToast();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -47,7 +44,14 @@ const dispatch = useDispatch()
     if(data && data._id){
         let token = data._id;
         createProject(input,token);
-        
+        toast({
+          title: 'Request sent',
+          description: "Please wait a bit for update",
+          status: 'info',
+          duration: 2000,
+          isClosable: true,
+          position:"top",
+        })
         setTimeout(()=>{
             dispatch(getProjects(token));
         },500);

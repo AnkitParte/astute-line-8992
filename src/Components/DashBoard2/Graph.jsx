@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Image, Flex, Box, SimpleGrid, Button, FormControl, Select, } from '@chakra-ui/react'
+import { Text, Image, Flex, Box, SimpleGrid, } from '@chakra-ui/react'
 import graph from "./graph.JPG"
 import graph2 from "./graph2.JPG"
 const Graph = () => {

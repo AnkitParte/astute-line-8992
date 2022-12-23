@@ -1,10 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import {
-    Box,
-    Flex,
-    Icon,  
-    Image,
-    Text,
    Modal,
    useDisclosure,
    Button,
@@ -17,6 +12,7 @@ import {
    ModalHeader,
    ModalCloseButton,
    ModalBody,
+   useToast,
   } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createClient, getClients } from '../../Store/clients/clients.actions';
@@ -31,14 +27,24 @@ export const NewClint = () => {
 
 })
   const { data } = useSelector((store) => store.auth);
+  const toast = useToast();
 
   const dispatch = useDispatch();
+
       
   const handleSubmit=()=>{
           console.log(input);
           if(data && data._id){
               let token = data._id;
               createClient(input,token);
+              toast({
+                title: 'Request sent',
+                description: "Please wait a bit for update",
+                status: 'info',
+                duration: 2000,
+                isClosable: true,
+                position:"top",
+              })
               setTimeout(()=>{
                 dispatch(getClients(token))
             },500);

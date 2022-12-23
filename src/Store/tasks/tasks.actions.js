@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const TASKPOST = "/tasks/post";
 export const TASKGET = "/tasks/get";
+export const TASK_LOAD = "/tasks/load/every";
 
 //`https://hellobonsaibackend.onrender.com/tasks`
 export const createTasks = (creds, token) => {
@@ -20,6 +21,7 @@ export const createTasks = (creds, token) => {
 }
 
 export const getTasks = (token) => async (dispatch) => {
+    dispatch({type:TASK_LOAD});
     try {
         let config = {
             method: 'get',

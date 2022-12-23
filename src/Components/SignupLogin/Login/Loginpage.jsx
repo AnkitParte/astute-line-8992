@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import googleIcon from '../googleIcon.png';
 import Styles from './login.module.css';
 
@@ -12,22 +12,25 @@ import {
   Text,
   Image,
   Checkbox,
-  Button,
-  FormLabel,
+  Button,InputGroup,InputRightElement,
+  FormLabel, useToast, Spinner
 } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../../Store/auth/auth.actions';
-import { useSelector,useDispatch } from 'react-redux';
-const initLoginData = {
-  email: '',
-  password: '',
-};
+import { useSelector, useDispatch } from 'react-redux';
+// const initLoginData = {
+//   email: '',
+//   password: '',
+// };
 const Loginpage = () => {
   const [loginData, setLoginData] = useState({});
-  const data = useSelector((store)=>store.auth);
+  const data = useSelector((store) => store.auth);
   const dispatch = useDispatch();
 
   const nav = useNavigate()
+  const toast = useToast();
+
+  const [show, setShow] = useState(false);
 
   const handleChangeLogin = e => {
     const { name, value } = e.target;
@@ -37,26 +40,11 @@ const Loginpage = () => {
     });
   };
 
-  const handleSubmit = (creds)=>{
-    dispatch(loginUser(creds))
-    if(data && data.isAuth){
-      alert("login successful")
-      return nav("/user/Dashboard/");
-    }
+  const handleSubmit = (creds) => {
+    dispatch(loginUser(toast, nav, creds))
   }
   console.log(loginData);
 
-
-  useEffect(()=>{
-    if(data && data.isAuth){
-      nav("/user/Dashboard/")
-    }
-    return (()=>{})
-  },[])
-
-  if(data && data.isAuth){
-    return nav("/user/Dashboard/");
-  }
   return (
     <>
       <Container>
@@ -76,7 +64,7 @@ const Loginpage = () => {
               size="lg"
               fontWeight={'400'}
               align="center"
-              // mt="50px"
+            // mt="50px"
             >
               Sign In{' '}
             </Heading>
@@ -108,14 +96,22 @@ const Loginpage = () => {
               mb="25px"
               _hover={{ border: '1px solid #00b289' }}
             />
-            <Input
-              id="password"
-              type="password"
-              name="password"
-              onChange={handleChangeLogin}
-              placeholder="Password"
-              _hover={{ border: '1px solid #00b289' }}
-            />
+            <InputGroup>
+              <Input
+                id="password"
+                type={show ? "text" : "password"}
+                name="password"
+                onChange={handleChangeLogin}
+                placeholder="Password"
+                _hover={{ border: '1px solid #00b289' }}
+              />
+              <InputRightElement width='4.5rem'>
+                <Button size="sm" bg="#00b289" color="white"
+                  _hover={{ bg: "#00b289", color: "white" }}
+                  onClick={() => setShow(!show)}
+                >{show ? "Hide" : "Show"}</Button>
+              </InputRightElement>
+            </InputGroup>
             <FormLabel
               style={{
                 display: 'flex',
@@ -134,6 +130,11 @@ const Loginpage = () => {
               />
               Remember me
             </FormLabel>
+            {data.loading &&
+            <Box display="flex" justifyContent="space-around" mt="15px">
+              <Spinner thickness="5px" size="lg" />
+            </Box>
+            }
             <Button
               mt="25px"
               mb="15px"
@@ -142,7 +143,7 @@ const Loginpage = () => {
               color="white"
               fontSize={'16px'}
               _hover={{ bg: '#00b280' }}
-              onClick={()=>handleSubmit(loginData)}
+              onClick={() => handleSubmit(loginData)}
             >
               Log in
             </Button>

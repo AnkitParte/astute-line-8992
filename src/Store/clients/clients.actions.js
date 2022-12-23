@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const CLIENT_FETCH = "/clients/fetch";
+export const CLIENT_LOAD = "/clients/data/loads"
 
 //"https://hellobonsaibackend.onrender.com/clients"
 export const createClient = (creds, token) => {
@@ -19,6 +20,7 @@ export const createClient = (creds, token) => {
 }
 
 export const getClients = (token) => async (dispatch) => {
+    dispatch({type:CLIENT_LOAD});
     try {
         let config = {
             method: 'get',
@@ -32,9 +34,9 @@ export const getClients = (token) => async (dispatch) => {
         let res = await axios(config);
         //console.log(res)
         dispatch({ type: CLIENT_FETCH, payload: res.data });
-        return (console.log("clients fetched"));
+        return
     }
-    catch (e) {
+    catch(e){
         console.log(e);
     }
 }

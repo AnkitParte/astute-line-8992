@@ -2,7 +2,6 @@ import {
   Avatar,
   Box,
   Button,
-  Collapse,
   Drawer,
   DrawerContent,
   DrawerOverlay,
@@ -13,9 +12,7 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  Text,
-  useColorModeValue,
-  useDisclosure,
+  useDisclosure, useToast
 } from '@chakra-ui/react';
 import crown from './crown.png';
 import { FaBell } from 'react-icons/fa';
@@ -35,10 +32,10 @@ import tax from './tax.png';
 import { FiMenu, FiSearch } from 'react-icons/fi';
 
 import React from 'react';
-import Clint from '../Components/Clint/Clint';
-import ProjectPage from '../Components/Project_madhu/ProjectPage';
+// import Clint from '../Components/Clint/Clint';
+// import ProjectPage from '../Components/Project_madhu/ProjectPage';
 import DashBoardRoutesPage from '../Router/Routes';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { logoutUser } from '../Store/auth/auth.actions';
 import Footer from '../Components/DashBoard2/Footer';
 import { useDispatch, useSelector } from 'react-redux';
@@ -49,8 +46,18 @@ export default function DashBoardNavbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {isAuth} = useSelector(store=>store.auth);
+  const toast = useToast();
+
   //Todo: Logout is incomplete
   const Logoutfunction = () => {
+    toast({
+      title: 'Logout Successful',
+      description: "good bye",
+      status: 'info',
+      duration: 2000,
+      isClosable: true,
+      position: "top",
+    })
     dispatch(logoutUser())
     navigate("/")
   }

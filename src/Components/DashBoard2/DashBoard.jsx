@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Tab, Tabs, TabList, TabPanel, TabPanels, Button } from "@chakra-ui/react"
-import { Text, Image, Stack, Flex, SimpleGrid } from '@chakra-ui/react'
+import { Text, Image, Stack, SimpleGrid } from '@chakra-ui/react'
 import CreateProject from './ButtonModal/CreateProject'
 import CompanyDetails from './ButtonModal/CompanyDetails'
 import { useSelector } from "react-redux";

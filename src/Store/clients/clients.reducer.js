@@ -1,11 +1,17 @@
-import { CLIENT_FETCH } from "./clients.actions";
+import { CLIENT_FETCH, CLIENT_LOAD } from "./clients.actions";
 
 
-const client = {allClients:[]}
+const client = {
+    allClients:[],
+    loadClient:false,
+}
 export function clientReducer(state = client, { type, payload }) {
     switch (type) {
+        case CLIENT_LOAD:{
+            return {...state,loadClient:true}
+        }
         case CLIENT_FETCH: {
-            return { ...state, allClients:payload }
+            return { ...state, allClients:payload,loadClient:false }
         }
         default: {
             return state;

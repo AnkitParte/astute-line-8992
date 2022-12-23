@@ -6,36 +6,35 @@ import {
   Stack,
   chakra,
   useColorModeValue,
-  Text,
+  Text, Spinner, Box
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteClients, getClients } from "../../Store/clients/clients.actions";
 
 
-export default function List(){
+export default function List() {
 
   const { data } = useSelector((store) => store.auth);
-  const {allClients} = useSelector((store)=>store.client)
-  
+  const { allClients, loadClient } = useSelector((store) => store.client)
+
   console.log(data);
   const dispatch = useDispatch();
 
-  const DeletClint=(id)=>{
+  const DeletClint = (id) => {
     deleteClients(id);
     let token = data._id;
     setTimeout(() => {
       dispatch(getClients(token))
     }, 500);
   }
-  useEffect(()=>{
-          if(data){
-              if(data._id){
-                  let token = data._id;
-                  dispatch(getClients(token));
-              }
-          }
-         
-  },[])
+  useEffect(() => {
+    if (data) {
+      if (data._id) {
+        let token = data._id;
+        dispatch(getClients(token));
+      }
+    }
+  }, [])
 
 
 
@@ -43,11 +42,14 @@ export default function List(){
   const bg = useColorModeValue("white", "gray.800");
   const bg2 = useColorModeValue("gray.100", "gray.700");
 
-// feedback: fw18_0782 and fp03_062 - can we divide this component into smaller pieces?
+  // feedback: fw18_0782 and fp03_062 - can we divide this component into smaller pieces?
 
-  return (
+  return (<>
+    {loadClient && <Box display="flex" justifyContent="space-around" mb="-30px">
+      <Spinner thickness="5px" size="lg" />
+    </Box>}
     <Flex
-    mt={"50px"}
+      mt={"50px"}
       w="full"
       bg="#edf3f8"
       _dark={{ bg: "#3e3e3e" }}
@@ -61,78 +63,79 @@ export default function List(){
         bg={{ md: bg }}
         shadow="lg"
       >
-      {allClients?.length===0?<Flex
-        direction={{ md: "row", xl: "column" }}
-        bg={dataColor}
-      >
-        <SimpleGrid
-          spacingY={3}
-          columns={{ md: 1, xl: 4}}
-          w={{ base: 120, md: "full" }}
-          textTransform="uppercase"
-          bg={bg2}
-          color={"gray.500"}
-          py={{ base: 1, md: 4 }}
-          px={{ base: 2, md: 10 }}
-          fontSize="md"
-          fontWeight="hairline"
+        {allClients?.length === 0 ? <Flex
+          direction={{ md: "row", xl: "column" }}
+          bg={dataColor}
         >
-        <span>Clint</span>
-          <span>Name</span>
-          <span>Email</span>
-          <chakra.span textAlign={{ md: "right" }}>Actions</chakra.span>
-        </SimpleGrid><Text textAlign={"center"} p="1rem">Currently you didn't have any clients please add a new client</Text></Flex>:
-        allClients?.map((el, pid) => {
-          return (
-            <Flex
-              direction={{ md: "row", xl: "column" }}
-              bg={dataColor}
-              key={pid}
-            >
-              <SimpleGrid
-                spacingY={3}
-                columns={{ md: 1, xl: 4}}
-                w={{ base: 120, md: "full" }}
-                textTransform="uppercase"
-                bg={bg2}
-                color={"gray.500"}
-                py={{ base: 1, md: 4 }}
-                px={{ base: 2, md: 10 }}
-                fontSize="md"
-                fontWeight="hairline"
+          <SimpleGrid
+            spacingY={3}
+            columns={{ md: 1, xl: 4 }}
+            w={{ base: 120, md: "full" }}
+            textTransform="uppercase"
+            bg={bg2}
+            color={"gray.500"}
+            py={{ base: 1, md: 4 }}
+            px={{ base: 2, md: 10 }}
+            fontSize="md"
+            fontWeight="hairline"
+          >
+            <span>Clint</span>
+            <span>Name</span>
+            <span>Email</span>
+            <chakra.span textAlign={{ md: "right" }}>Actions</chakra.span>
+          </SimpleGrid><Text textAlign={"center"} p="1rem">Currently you didn't have any clients please add a new client</Text></Flex> :
+          allClients?.map((el, pid) => {
+            return (
+              <Flex
+                direction={{ md: "row", xl: "column" }}
+                bg={dataColor}
+                key={pid}
               >
-              <span>Clint</span>
-                <span>Name</span>
-                <span>Email</span>
-                <chakra.span textAlign={{ md: "right" }}>Actions</chakra.span>
-              </SimpleGrid>
-              <SimpleGrid
-                spacingY={3}
-                columns={{ md: 1, xl: 4 }}
-                w="full"
-                py={2}
-                px={10}
-                fontWeight="hairline"
-              >
-              <span>{el.name}</span>
-                <span>{el.name}</span>
-                <chakra.span
-                  textOverflow="ellipsis"
-                  whiteSpace="nowrap"
+                <SimpleGrid
+                  spacingY={3}
+                  columns={{ md: 1, xl: 4 }}
+                  w={{ base: 120, md: "full" }}
+                  textTransform="uppercase"
+                  bg={bg2}
+                  color={"gray.500"}
+                  py={{ base: 1, md: 4 }}
+                  px={{ base: 2, md: 10 }}
+                  fontSize="md"
+                  fontWeight="hairline"
                 >
-                  {el.email}
-                </chakra.span>
-                <Flex justify={{ md: "end" }}>
-                  <Button onClick={()=>DeletClint(el._id)} variant="solid" colorScheme="red" size="sm"  >
-                    Delete
-                  </Button>
-                </Flex>
-              </SimpleGrid>
-            </Flex>
-          );
-        })}
+                  <span>Clint</span>
+                  <span>Name</span>
+                  <span>Email</span>
+                  <chakra.span textAlign={{ md: "right" }}>Actions</chakra.span>
+                </SimpleGrid>
+                <SimpleGrid
+                  spacingY={3}
+                  columns={{ md: 1, xl: 4 }}
+                  w="full"
+                  py={2}
+                  px={10}
+                  fontWeight="hairline"
+                >
+                  <span>{el.name}</span>
+                  <span>{el.name}</span>
+                  <chakra.span
+                    textOverflow="ellipsis"
+                    whiteSpace="nowrap"
+                  >
+                    {el.email}
+                  </chakra.span>
+                  <Flex justify={{ md: "end" }}>
+                    <Button onClick={() => DeletClint(el._id)} variant="solid" colorScheme="red" size="sm"  >
+                      Delete
+                    </Button>
+                  </Flex>
+                </SimpleGrid>
+              </Flex>
+            );
+          })}
       </Stack>
     </Flex>
+  </>
   );
 };
 

@@ -1,18 +1,16 @@
 import React from 'react'
-import { Box, Text, Button, SimpleGrid } from '@chakra-ui/react'
+import { SimpleGrid } from '@chakra-ui/react'
 import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
 } from '@chakra-ui/react'
 import InitialFocus from './InitialFocus'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 const UpComing = () => {
 
     // const alltasks = useSelector(store.task.alltasks);
